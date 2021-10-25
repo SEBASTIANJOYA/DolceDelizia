@@ -22,7 +22,7 @@ const Footer = () => {
             <MDBCol md="2" lg="2" xl="2" className="mx-auto mt-3 dark-grey-text">
               <h6 className="text-uppercase mb-4 font-weight-bold dark-grey-text"><b>Products</b></h6>
               <p>
-                <a style={{color:'black'}} href="#!">MDBootstrap</a>
+                <a  style={{color:'black'}} href="#!">MDBootstrap</a>
               </p>
               <p>
                 <a style={{color:'black'}} href="#!">MDWordPress</a>

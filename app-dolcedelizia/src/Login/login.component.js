@@ -25,11 +25,11 @@ const Login = () => {
                     <Form.Label style={{color: 'black', fontSize:'15px'}}><b>CONTRASEÑA :</b> </Form.Label>
                     <Form.Control type="password" placeholder="Contraseña" />
                 </Form.Group>
-                    
-                
-            <Button variant="outline-info"><b> I N I C I A R </b></Button>
-            <Button href="/registrodatos" variant="btn btn-link">Haz Click Para Registrarte ! </Button>
+            
+           
             </Form.Group>
+            <Button variant="outline-info " size="lg"><b> I N I C I A R </b></Button>
+            <Button href="/registrodatos" variant="btn btn-link">Haz Click Para Registrarte ! </Button>
  
 
         </Form>
