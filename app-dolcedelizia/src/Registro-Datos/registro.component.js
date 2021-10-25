@@ -1,8 +1,16 @@
 import React from 'react';
 import {Form,Alert,Card,Col,Row,Button} from "react-bootstrap";
 
+function onlyNums(e){
+    const code = window.event ? e.which : e.keyCode;
+
+    return !( code < 48 || code > 57 );
+};
+
 
 const Registro = () => {
+
+    
     return (
       
         <Card>

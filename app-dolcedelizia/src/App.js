@@ -6,7 +6,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import Menu from './Menu/menu.component'
 import Footer from "./Menu/footer.component";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
+
 function App() {
   return (
   <Router>
@@ -19,8 +19,6 @@ function App() {
       </header>
 
       <section className="App-main">
-       
-       
       </section>
 
       

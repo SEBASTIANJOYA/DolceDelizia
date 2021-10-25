@@ -1,7 +1,14 @@
 import React from 'react';
 import {Form,Group,Label,Text,Button,Control,Alert,Card} from "react-bootstrap";
+import {useForm} from 'react-hook-form';
+    
+    //Creo la funcion en js para despues 
+    const hello = () =>{
+        alert("LOGIN")
+    };
 
-const Login = () => {
+    const Login = () => {
+
     return (
 
     <Card style={{ width: '25rem'}}>
@@ -22,7 +29,7 @@ const Login = () => {
                 <Form.Control type="email" placeholder="Usuario" />
                 
                 <Form.Group className="mb-6" controlId="formBasicPassword">
-                    <Form.Label style={{color: 'black', fontSize:'15px'}}><b>CONTRASEÑA :</b> </Form.Label>
+                    <Form.Label required style={{color: 'black', fontSize:'15px'}}><b>CONTRASEÑA :</b> </Form.Label>
                     <Form.Control type="password" placeholder="Contraseña" />
                 </Form.Group>
             

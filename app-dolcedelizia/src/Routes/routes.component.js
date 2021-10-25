@@ -8,6 +8,7 @@ import Login from '../Login/login.component';
 import Registro from '../Registro-Datos/registro.component';
 import HomeDolceDelizia from '../Home/home.component';
 import alertGuardado from '../Menu/alerta-guardado.component';
+import Productos from '../Administrador/products.component'
 //Creo un componente...
 const Routes = () => {
     return(
@@ -26,6 +27,10 @@ const Routes = () => {
 
                 <Route exact path="/registrodatos/exitoso">
                     <alertGuardado></alertGuardado>
+                </Route>
+
+                <Route exact path="/administrador/productos">
+                    <Productos></Productos>
                 </Route>
             </Switch>
    
