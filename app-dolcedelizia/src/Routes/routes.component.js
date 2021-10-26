@@ -8,7 +8,7 @@ import Login from '../Login/login.component';
 import Registro from '../Registro-Datos/registro.component';
 import HomeDolceDelizia from '../Home/home.component';
 import alertGuardado from '../Menu/alerta-guardado.component';
-import Productos from '../Administrador/products.component'
+import Administrador from '../Administrador/administrador.component';
 //Creo un componente...
 const Routes = () => {
     return(
@@ -30,7 +30,7 @@ const Routes = () => {
                 </Route>
 
                 <Route exact path="/administrador/productos">
-                    <Productos></Productos>
+                    <Administrador></Administrador>
                 </Route>
             </Switch>
    
