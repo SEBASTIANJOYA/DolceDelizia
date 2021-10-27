@@ -7,9 +7,9 @@ const Home = () => {
     return (
         <Navbar  collapseOnSelect="true" role="navigation" bg="blue" expand="md" >
         <Container fluid>
-          <Navbar.Brand  style={{backgroundImage:''}} href="#">
+          <Navbar.Brand  style={{backgroundImage:''}} href="/homedolcedelizia">
           <img src={logo} alt="logo" style={{width:'50px'}}/>
-            <b >DOLCE DELIZIA</b></Navbar.Brand>
+            <b >     DOLCE DELIZIA</b></Navbar.Brand>
           <Navbar.Toggle aria-controls=" basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" style={{withmax:'100%'}}>
             <Row style={{margin:'auto'}}>
