@@ -14,7 +14,7 @@ const Routes = () => {
     return(
             <Switch>
                 <Route exact path="/homedolcedelizia">
-                    
+                    <HomeDolceDelizia></HomeDolceDelizia>
                 </Route>
 
                 <Route exact path="/login">

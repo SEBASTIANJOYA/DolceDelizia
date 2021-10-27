@@ -1,10 +1,23 @@
 import React from 'react';
-
+import {Form,Group,Label,Text,Button,Control,Alert,Card} from "react-bootstrap";
 
 const HomeDolceDelizia = () => {
     return (
+        <section>
 
-        <h1> H O M E - P R I N C I P A L</h1>
+<Form>
+  
+    <Form.Text className="text-muted">
+      PAGINA PRINCIPAL
+    </Form.Text>
+  
+
+  
+</Form>
+
+        </section>
+
+        
     )
 };
 
