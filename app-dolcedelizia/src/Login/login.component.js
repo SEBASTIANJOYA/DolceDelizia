@@ -1,46 +1,97 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Form,Group,Label,Text,Button,Control,Alert,Card} from "react-bootstrap";
 import {useForm} from 'react-hook-form';
-    
-    //Creo la funcion en js para despues 
-    const hello = () =>{
-        alert("LOGIN")
-    };
+import './login.css';  
 
+    
+
+    
     const Login = () => {
+        const {register,handleSubmit, formState: { errors }} = useForm();
+        
+        const onsubmit = (data,e) =>{
+            console.log(data);
+            e.target.reset();
+        }
 
     return (
 
-    <Card style={{ width: '25rem'}}>
-        <Form variant="card">
-            <Alert variant="alert alert-info">
-                <Alert.Heading><b>I N I C I O - D E - S E S I Ó N</b></Alert.Heading>
-                <h6>
-                    <b>Bienvenido acá podrá acceder los datos correspondientes para iniciar sesión en el sistema.</b>
-                </h6>
-                <hr />
-                <p style={{fontSize:'14px'}} className="mb-0">
-                    <b>Registro de la información del usuario.</b>
-                </p>
-            </Alert>
+        <div className="Login">
+        <Form onSubmit={handleSubmit(onsubmit)}
+              style={{ widthmax: '1500px', 
+                 height: '100%'}}
+                 
+                 className="login-form">
+            
+                <h1 style={{color: 'black'}}>INICIO DE SESION</h1>
+                <br/>
+           
 
-            <Form.Group className="sm-8 mb-6" controlId="formBasicEmail">
-                <Form.Label style={{color: 'black', fontSize:'15px'}}><b>USUARIO :</b> </Form.Label>
-                <Form.Control type="email" placeholder="Usuario" />
+            <Form.Group >
+                <Form.Label 
+                    style={{color: 'black', fontSize:'15px'}}>
+                        <b>USUARIO <br/></b> 
+                </Form.Label>
+                <br/>
+                <Form.Control 
+                    name="usuario"
+                    style={{color: 'black',paddingtop: '10px' }} 
+                    type="text" 
+                    placeholder="Enter User" 
+
+                    {...register("usuario", { 
+                        required:{
+                            value: true,
+                            message: 'Campo Obligatorio' 
+                        }
+                    })}   
+                    />
+                    
+                    <span 
+                    style={{fontSize:'15px'}}
+                    className="text-danger text-small d-block ">
+                        {errors.usuario &&  errors.usuario.message}
+                    </span>
                 
-                <Form.Group className="mb-6" controlId="formBasicPassword">
-                    <Form.Label required style={{color: 'black', fontSize:'15px'}}><b>CONTRASEÑA :</b> </Form.Label>
-                    <Form.Control type="password" placeholder="Contraseña" />
+                <Form.Group className="mt-6" controlId="formBasicPassword">
+                    <Form.Label required
+                        style={{color: 'black', fontSize:'15px'}}>
+                        <b><br/>CONTRASEÑA<br/> </b> 
+                    
+                    </Form.Label>
+                    <br/>
+                    <Form.Control
+                        name="contraseña"
+                        {...register("contraseña", { 
+                            required:{
+                                value: true,
+                                message: 'Campo Obligatorio' 
+                            }
+                        })}
+                        type="password" 
+                        placeholder="Password" />
+                        
+                        
+                    <span 
+                     style={{fontSize:'15px'}}
+                    className="text-danger text-small d-block ">
+                        {errors.contraseña &&  errors.contraseña.message}
+                    </span>
                 </Form.Group>
             
-           
+                
             </Form.Group>
-            <Button variant="outline-info " size="lg"><b> I N I C I A R </b></Button>
-            <Button href="/registrodatos" variant="btn btn-link">Haz Click Para Registrarte ! </Button>
+            <br/>
+            <Button className="btnlogin"type="submit" >Log in</Button>
+            <div className="text-center pt-3">
+            <Button style={{padddingtop:'300px'}}href="/registrodatos" variant="btn btn-link">Haz Click Para Registrarte ! </Button>
+
+            </div>
+           
  
 
         </Form>
-    </Card>
+        </div>
 
     )
 };
