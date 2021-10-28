@@ -1,14 +1,15 @@
 
   .Login {
+    
     padding: 60px 0;
+    width: 5000px;
+    
   }
 
-  .Login form {
+  .Login Form {
     margin: auto;
     max-width: 320px;
+    
   }
 
-  .loginbtn {
-
-    color: antiquewhite;
-  }
+  

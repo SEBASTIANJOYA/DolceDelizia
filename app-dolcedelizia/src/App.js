@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.scss';
 import './Login/login.css';
 import Routes from './Routes/routes.component'

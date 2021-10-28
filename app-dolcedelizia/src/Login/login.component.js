@@ -8,15 +8,17 @@ import './login.css';
     
     const Login = () => {
         const {register,handleSubmit, formState: { errors }} = useForm();
-        const onsubmit = (data) =>{
+        
+        const onsubmit = (data,e) =>{
             console.log(data);
+            e.target.reset();
         }
 
     return (
 
         <div className="Login">
         <Form onSubmit={handleSubmit(onsubmit)}
-        style={{ widthmax: '1500px', 
+              style={{ widthmax: '1500px', 
                  height: '100%'}}
                  
                  className="login-form">
@@ -80,7 +82,7 @@ import './login.css';
                 
             </Form.Group>
             <br/>
-            <Button variant="primary" type="submit">Log in</Button>
+            <Button className="btnlogin"type="submit" >Log in</Button>
             <div className="text-center pt-3">
             <Button style={{padddingtop:'300px'}}href="/registrodatos" variant="btn btn-link">Haz Click Para Registrarte ! </Button>
 
