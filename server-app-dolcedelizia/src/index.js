@@ -1,29 +1,23 @@
-import express from 'express';
-import Routes from './routes/index.js';
+const app = require('../src/config/server');
+require('../src/app/routes/routes')(app);
 
-//Inicializacion
-const app = express();
 
-//Pueerto por el que va salir
-app.set('port',8080);
+var mysql = require('mysql');
 
-//Middleware
-//Intermediario se encarga de haver un proceso entre cada una de las 
-//llamadas del cliente y el servidor
-app.use(express.json());
-
-//Routes
-app.get('/',(req,resp) => {
-    resp.send("Wellcome ! ");
+var conexion= mysql.createConnection({
+    host : '127.0.0.1',
+    database : 'DolceDelizia',
+    user : 'root',
+    password : 'Sebas1997',
 });
-app.use('/api',Routes);
 
-//Middleware
-//Intermediario se encarga de haver un proceso entre cada una de las 
-//llamadas del cliente y el servidor
-app.use(express.json());
-//Running
-app.listen(app.get('port'),() => {
-	console.log(`server listening on port ${app.get("port")}`);
-
+conexion.connect((err) => {
+    if (err) throw err
+        console.log('Connect to Database ');
 });
+
+// starting the server
+app.listen(app.get('port'), () => {
+   console.log('Server listen on port', app.get('port'));
+ });
+ 
