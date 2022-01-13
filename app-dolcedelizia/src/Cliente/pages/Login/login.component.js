@@ -1,7 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState,Fragment} from 'react';
 import {Form,Group,Label,Text,Button,Control,Alert,Card} from "react-bootstrap";
 import {useForm} from 'react-hook-form';
-import './login.css';  
+import './login.css'; 
+import Menu from '../../components/Menu/menu.component';
 
     
 
@@ -16,6 +17,8 @@ import './login.css';
 
     return (
 
+        <Fragment>
+        <Menu></Menu>
         <div className="Login">
         <Form onSubmit={handleSubmit(onsubmit)}
               style={{ widthmax: '1500px', 
@@ -92,7 +95,8 @@ import './login.css';
 
         </Form>
         </div>
-
+    
+        </Fragment>
     )
 };
 
