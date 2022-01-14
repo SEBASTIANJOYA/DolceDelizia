@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form,Alert,Card,Col,Row,Button} from "react-bootstrap";
 import './registro.css'
-
+import Menu from '../../components/Menu/menu.component';
 function onlyNums(e){
     const code = window.event ? e.which : e.keyCode;
 
@@ -15,7 +15,7 @@ const Registro = () => {
     return (
       
         <div className="Registro"> 
-
+            <Menu></Menu>
             <Form>
                 <br/>
             <h3 style={{color: 'black'}}>REGISTRO DE DATOS</h3>

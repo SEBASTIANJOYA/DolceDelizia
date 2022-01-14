@@ -1,7 +1,7 @@
 import React, { Fragment,useState } from 'react';
 import {Form,Group,Label,Text,Button,Control,Alert,Card} from "react-bootstrap";
 import Lista from './list.product'
-
+import Menu from '../../components/Menu/menu.component';
 
 const HomeDolceDelizia = () => {
     const [items,setItems]= useState([
@@ -14,9 +14,18 @@ const HomeDolceDelizia = () => {
     return (
     <Fragment>
 
-            
-          
+       
+
+        
+        <div>
+        <Menu></Menu>
         <Lista  list={items}/>
+        </div>    
+        
+
+
+        
+        
     
         
 

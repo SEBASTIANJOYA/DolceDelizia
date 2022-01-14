@@ -5,7 +5,11 @@ import logo from './dolcedelizia.png';
 
 const Home = () => {
     return (
-        <Navbar  collapseOnSelect="true" role="navigation" bg="blue" expand="md" >
+        <Navbar  collapseOnSelect="true" role="navigation" bg="blue" expand="md" style={
+          {
+            fontSize:'16px'
+          }
+        }>
         <Container fluid>
           <Navbar.Brand  style={{backgroundImage:''}} href="/homedolcedelizia">
           <img src={logo} alt="logo" style={{width:'50px'}}/>
@@ -15,7 +19,7 @@ const Home = () => {
             <Row style={{margin:'auto'}}>
             <Nav
               className="mr-auto me-auto "
-              style={{ maxHeight: '100px',  }}
+              style={{ maxHeight: '500px',  }}
               navbarScroll
             >
               <Col lg={2}>
