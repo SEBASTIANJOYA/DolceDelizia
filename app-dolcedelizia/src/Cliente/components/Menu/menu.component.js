@@ -26,7 +26,7 @@ const Home = () => {
               <Nav.Link href="/homedolcedelizia"><b>INICIO</b></Nav.Link>
               </Col>
               <Col lg={6}>
-              <Nav.Link href=""><b>QUIENES SOMOS ?</b></Nav.Link>
+              <Nav.Link href=""><b>¿QUIENES SOMOS?</b></Nav.Link>
               </Col>
               <Col lg={3}>
               <Nav.Link href=""><b>CONTACTOS</b></Nav.Link>
