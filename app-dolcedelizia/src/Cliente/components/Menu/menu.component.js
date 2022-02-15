@@ -1,57 +1,21 @@
-import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
-import {Navbar,Button,Container,Nav,Form,FormControl, Row,Col} from "react-bootstrap";
-import logo from './dolcedelizia.png';
-
+import React, { Fragment } from 'react';
+import MenuLogout from './menu.logout';
+import MenuLogged from './menu.logued';
 const Home = () => {
+
+  const localStorage=window.localStorage.length;
     return (
-        <Navbar  collapseOnSelect="true" role="navigation" bg="blue" expand="md" style={
+        <Fragment>
           {
-            fontSize:'16px'
+          (localStorage==0)?
+          <MenuLogout></MenuLogout>
+          :<MenuLogged></MenuLogged>
+
+          
           }
-        }>
-        <Container fluid>
-          <Navbar.Brand  style={{backgroundImage:''}} href="/homedolcedelizia">
-          <img src={logo} alt="logo" style={{width:'50px'}}/>
-            <b >     DOLCE DELIZIA</b></Navbar.Brand>
-          <Navbar.Toggle aria-controls=" basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" style={{withmax:'100%'}}>
-            <Row style={{margin:'auto'}}>
-            <Nav
-              className="mr-auto me-auto "
-              style={{ maxHeight: '500px',  }}
-              navbarScroll
-            >
-              <Col lg={2}>
-              <Nav.Link href="/homedolcedelizia"><b>INICIO</b></Nav.Link>
-              </Col>
-              <Col lg={6}>
-              <Nav.Link href=""><b>¿QUIENES SOMOS?</b></Nav.Link>
-              </Col>
-              <Col lg={3}>
-              <Nav.Link href=""><b>CONTACTOS</b></Nav.Link>
-              </Col>
-              <Col lg={3}>
-              <Nav.Link href=""><b>AYUDA</b></Nav.Link>
-              </Col>
-              
-              <Col lg={2}>
-
-              <Nav.Link href="/login"><b>LOGIN</b></Nav.Link>
-              </Col>
-             
-            </Nav>
-            </Row>
-            <nav>
-            
-            <Form className="d-flex" style={{margin:'default'}} >
-              <Button href="/login" variant="outline-info form-control"><b>Login</b></Button>
-
-            </Form>
-            </nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+          
+      </Fragment>
+       
     )
 };
 

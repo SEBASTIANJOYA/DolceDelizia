@@ -4,11 +4,18 @@ import Sidebar from '../../components/sidebar/sidebar'
 import './empleados.scss';
 const Empleado = ()=>{
 
+
+
+
     return(
             <Fragment>
-
             <Sidebar></Sidebar>
+            {
+                (localStorage.getItem('type_user')=="3")?
 
+
+            <div><h1>NO DISPONIBLE</h1></div>
+            :
             <div className="container empleados" >
 
                 <form >
@@ -52,8 +59,8 @@ const Empleado = ()=>{
 
                          <div className="form-group col-md-4">
                              <br></br>
-                             <label className="label-age">Edad</label>
-                             <input className="form-control" id="input-age"placeholder="Edad" type="number"></input>
+                             <label className="label-age">Email</label>
+                             <input className="form-control" id="input-email"placeholder="Email" type="email"></input>
 
                          </div>
 
@@ -67,7 +74,16 @@ const Empleado = ()=>{
 
                      <div className="row">
 
-                         <div className="form-group col-md-4">
+                          <div className="form-group col-md-3">
+
+                            <br></br>
+                            <label className="label-user">Cedula</label>
+                            <input className="form-control" id="input-cc"placeholder="Cedula" type="number"></input>
+
+
+                          </div>
+
+                         <div className="form-group col-md-3">
 
                              <br></br>
                              <label className="label-user">Usuario</label>
@@ -76,7 +92,7 @@ const Empleado = ()=>{
 
                          </div>
 
-                         <div className="form-group col-md-4">
+                         <div className="form-group col-md-3">
                                 <br></br>
                              <label className="label-password">Contraseña</label>
                              <input className="form-control" id="input-password"placeholder="Contraseña" type="text"></input>
@@ -84,7 +100,7 @@ const Empleado = ()=>{
 
                          </div>
 
-                        <div className="form-group col-md-4">
+                        <div className="form-group col-md-3">
 
                             <br></br>
                             <label className="label-type">Rol</label>
@@ -94,9 +110,9 @@ const Empleado = ()=>{
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">Administrador</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Empleado</Dropdown.Item>
+                                    
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
@@ -123,7 +139,7 @@ const Empleado = ()=>{
                                 <th scope="col">Primer Apellido</th>
                                 <th scope="col">Segundo Apellido</th>
                                 <th scope="col">Direccion</th>
-                                <th scope="col">Edad</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Acciones</th>
                             </tr>
 
@@ -161,6 +177,7 @@ const Empleado = ()=>{
 
 
             </div>
+            }
             </Fragment>
 
             

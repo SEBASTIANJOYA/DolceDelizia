@@ -33,12 +33,12 @@ var ValidarRutaPedidos=function(){
 }
 
 const Sidebar = () => {
-
+/*
     const[errorMessage,setErrorMessage] = useState("");
     const[product, setProduct] = useState(defaultProduct);
     const[products,setProducts] = useState([]);
     const [onEditId, setEditId] = useState();
-    
+  
     const handleOnChange = (event, key) => {
         setErrorMessage('');
         setProduct({
@@ -64,7 +64,7 @@ const Sidebar = () => {
       const handleOnClickCancel = () => {
         setEditId(false);
         //fetchProducts();
-      };
+      };*/
 
         return (
        

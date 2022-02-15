@@ -1,9 +1,14 @@
 import React, { Fragment,useState } from 'react';
-import {Form,Group,Label,Text,Button,Control,Alert,Card} from "react-bootstrap";
 import Lista from './list.product'
 import Menu from '../../components/Menu/menu.component';
 
-const HomeDolceDelizia = () => {
+
+
+
+
+
+const HomeDolceDelizia  = () => {
+    
     const [items,setItems]= useState([
     {id:'1',nombre: 'Postre de Fresa',precio: 600,img: 'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/01/paydefresagelatina.png'},
     {id:'2',nombre: 'Postre de Chocolate',precio: 800,img: 'https://www.hogarmania.com/archivos/201903/postres-chocolate-668x400x80xX.jpg'},
@@ -13,14 +18,19 @@ const HomeDolceDelizia = () => {
     ]);
     return (
     <Fragment>
+        {
+               
+            <div>
+            
+            <Menu></Menu>
+            <Lista  list={items}/>
+            </div> 
+            
+          
 
-       
+            
+        }
 
-        
-        <div>
-        <Menu></Menu>
-        <Lista  list={items}/>
-        </div>    
         
 
 

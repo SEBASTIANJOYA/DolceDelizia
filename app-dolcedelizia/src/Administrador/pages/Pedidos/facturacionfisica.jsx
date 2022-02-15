@@ -12,7 +12,7 @@ const Facturacion = () =>{
 
 
 
-            <div className="container">
+            <div className="container" style={{AlignItems: 'center',textAlign: 'center'}}>
                 <Navbar></Navbar>
                 <a>Facturacion Fisica</a>
                

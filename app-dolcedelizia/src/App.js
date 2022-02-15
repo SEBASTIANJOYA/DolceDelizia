@@ -2,12 +2,12 @@ import React from 'react';
 
 import './App.scss';
 import './Cliente/pages/Login/login.css';
-import Routes from './Routes/routes.component'
+import PublicRoutes from './Routes/routes.public'
+import PrivateRoutes from './Routes/routes.private'
 import {BrowserRouter as Router} from 'react-router-dom';
-import Menu from './Cliente/components/Menu/menu.component'
-import Footer from "./Cliente/components/Menu/footer.component";
+import Footer from "./Cliente/components/footer/footer.component";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import isAuth from './controllers/logout'
 
 
 function App() {
@@ -18,7 +18,16 @@ function App() {
       
     
       <header className="App-header">
-      <Routes/>
+        {
+           (isAuth()==true||localStorage.length==0 || localStorage.getItem("type_user")=="1")?
+
+           <PublicRoutes/>
+           :
+           <PrivateRoutes/>
+
+
+        }
+      
       </header>
 
       <section className="App-main">

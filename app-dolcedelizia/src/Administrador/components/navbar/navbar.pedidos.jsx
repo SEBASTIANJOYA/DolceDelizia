@@ -13,11 +13,11 @@ const navbar_pedidos =() =>{
             
                 <ul className="nav" >
 
-                    <li className="nav-item col-lg-6">
+                    <li className="nav-item col-lg-5">
                         <NavLink to="/administrador/pedidosrealizados"  >Domicilios</NavLink>
                     </li>
 
-                    <li className="nav-item col-lg-6">
+                    <li className="nav-item col-lg-7">
 
                         < NavLink to="/administrador/facturacionfisica" >Facturación Fisica</NavLink>
 
