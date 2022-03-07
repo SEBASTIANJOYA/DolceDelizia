@@ -19,11 +19,11 @@ const router = Router();
 //Para las funciones que tienen como parámetros id e idUsuario, hace referencia a id = identidicacion 
 //e idUsuario = Id_tipo (tipo de usuario) llave foránea
 router.get('/user/:id/:idUsuario', [], getUser); 
-router.get('/user', [], getUsers);
-router.post('/user', [], createUser);
+router.get('/listaUsuarios', [], getUsers);
+router.post('/registroCliente', [], createUser);
 router.put('/user/:id/:idUsuario', [], updateUser);
-router.delete('/user/:id/:idUsuario', [], deleteUser);
-router.get('/login/:usuario/:contrasena', [], loginUser);
+router.delete('/eliminarUsuario/:id', [], deleteUser);
+router.post('/loginUsuario', [], loginUser);
 router.get('/tipoUsuario', [],typeUser);
 
 

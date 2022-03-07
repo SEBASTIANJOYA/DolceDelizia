@@ -20,29 +20,30 @@ const Registro = () => {
     const [second_surname,setSecond_surname]= useState("");   
     const [first_name,setFirst_name]= useState("");   
     const [second_name,setSecond_name]= useState("");   
-    const [date_birth,setDate_birth]= useState("");   
+    const [email,setEmail]= useState("");   
     const [direction,setDirection]= useState("");   
     const [telephone_number,setTelephone_Number]= useState("");      
     
     const register=()=>{
         
         
-        Axios.post('http://localhost:3001/registerClient',{ 
+        Axios.post('http://localhost:3001/user/registroCliente',{ 
     
-            user:user,
-            password:password,
-            cedula: cedula,
-            surname:surname,
-            second_surname:second_surname,
-            first_name:first_name,
-            second_name:second_name,
-            date_birth:"sfsd",
-            direction:direction,
-            telephone_number:telephone_number,
-            type_user:1,
+            usuario:user,
+            contrasena:password,
+            identificacion: cedula,
+            primer_apellido:surname,
+            segundo_apellido:second_surname,
+            primer_nombre:first_name,
+            segundo_nombre:second_name,
+            direccion:direction,
+            telefono:telephone_number,
+            Id_tipo:1,
+            email:email
 
         }).then((response)=>{
             console.log(response);
+            window.location.href="./login"
         });
     
     }
@@ -107,9 +108,9 @@ const Registro = () => {
                         
                         <Col sm>
                             
-                            <Form.Control placeholder="Fecha de Nacimiento" onChange={(e)=>
+                            <Form.Control placeholder="Email" onChange={(e)=>
                             {
-                                setDate_birth(e.target.value);
+                                setEmail(e.target.value);
                             }
                             }/>
                         </Col>
@@ -119,7 +120,7 @@ const Registro = () => {
                     <Row>
                         <Col sm>
                             
-                            <Form.Control placeholder="user" onChange={(e)=>
+                            <Form.Control placeholder="Usuario" onChange={(e)=>
                             {
                                 setUser(e.target.value);
                             }
@@ -127,7 +128,7 @@ const Registro = () => {
                         </Col>
                         <Col sm>
                             
-                            <Form.Control placeholder="password" onChange={(e)=>
+                            <Form.Control placeholder="Contraseña" onChange={(e)=>
                             {
                                 setPassword(e.target.value);
                             }

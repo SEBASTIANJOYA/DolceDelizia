@@ -17,7 +17,7 @@ import logout from '../../../controllers/logout'
        
         const verifiylogin = () =>{
             
-            Axios.post('http://localhost:3001/login',{
+            Axios.post('http://localhost:3001/user/loginUsuario',{
 
                 user:userLogin,
                 password:passwordLogin,
@@ -38,11 +38,14 @@ import logout from '../../../controllers/logout'
                     }
                     else if(response.data.typeuser==="2"||response.data.typeuser=="3"){
                         window.location.href="./administrador/productos";
+                         
                         
                     }
                    //window.location.href="./administrador/productos?user="+userLogin;
                 }
             });
+
+           
 
         }
 

@@ -8,7 +8,7 @@
         localStorage.removeItem("type_user");
         localStorage.removeItem("user");
         localStorage.removeItem("date");
-        localStorage.removeItem("token");
+        localStorage.removeItem("users");
         
         
         window.location.href="./homedolcedelizia";

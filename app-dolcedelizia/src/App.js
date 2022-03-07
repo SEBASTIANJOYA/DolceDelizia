@@ -19,7 +19,7 @@ function App() {
     
       <header className="App-header">
         {
-           (isAuth()==true||localStorage.length==0 || localStorage.getItem("type_user")=="1")?
+           (isAuth()==true||!localStorage.getItem("type_user") || localStorage.getItem("type_user")=="1")?
 
            <PublicRoutes/>
            :

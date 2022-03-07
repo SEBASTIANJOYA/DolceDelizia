@@ -1,5 +1,7 @@
 const { response } = require('express');
-const userConnection = require('../database/user');
+var userConnection = require('../database/user');
+
+
 
 //Función para crear un nuevo usuario en la BD
 const createUser = async (req, res = response) => {
@@ -21,32 +23,23 @@ const createUser = async (req, res = response) => {
     } = req.body;
 
     //Consulta para guardar en la BD, en la tabla user
-    var sSQLCreate = 'INSERT INTO usuario (identificacion,Id_tipo,primer_nombre,segundo_nombre, '
-    sSQLCreate += ' primer_apellido,segundo_apellido,usuario,contrasena,direccion,telefono,email) VALUES (';
-    sSQLCreate +=  identificacion + ', ';
-    sSQLCreate +=  Id_tipo + ', ';
-    sSQLCreate += '\'' + primer_nombre + '\', ';
-    sSQLCreate += '\'' + segundo_nombre + '\', ';
-    sSQLCreate += '\'' + primer_apellido + '\', ';
-    sSQLCreate += '\'' + segundo_apellido + '\', ';
-    sSQLCreate += '\'' + usuario + '\', ';
-    sSQLCreate += '\'' + contrasena + '\', ';
-    sSQLCreate += '\'' + direccion + '\', ';
-    sSQLCreate += '\'' + telefono + '\', ';
-    sSQLCreate += '\'' + email + '\');';
+    
 
     const connection = userConnection();
     connection.query(
-      sSQLCreate,
+      "INSERT INTO Usuario (identificacion,Id_tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,usuario,contraseña,direccion,telefono,email) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
+      [identificacion,Id_tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,usuario,contrasena,direccion,telefono,email],
       function (err, results, fields) {
 
         if (err) {
+          console.log(err);
           //Error con la base de datos
           return res.status(500).json({
             success: false,
             result: err,
           });
-        } else {
+        } else{
+          console.log("como");
           //Respuesta de la petición
           return res.status(200).json({
             success: true,
@@ -126,10 +119,9 @@ const getUsers = async (req, res = response) => {
           });
         } else {
           //
-          return res.status(200).json({
-            success: true,
-            results
-          });
+
+          console.log("esta")
+          res.send(results);
         }
       }
     );
@@ -193,9 +185,11 @@ const updateUser = async (req, res = response) => {
             result: err,
           });
         } else {
+          console.log("como");
           //Resultado de la consulta
           return res.status(200).json({
             success: true,
+            
             results
           });
         }
@@ -220,20 +214,24 @@ const deleteUser = async (req, res = response) => {
       idUsuario, //tipo usuario
     } = req.params;
     //Consulta a ejecutar
-    var SQLDelete =  'DELETE FROM usuario '
-    SQLDelete += '  WHERE identificacion = '+ id  + ' AND Id_tipo = '+idUsuario+';';
-
+    var SQLDelete =  'DELETE FROM usuario WHERE identificacion = ? ;';
+     
+    console.log(id)
     const connection = userConnection();
     connection.query(
-      SQLDelete,
+      "DELETE FROM usuario WHERE identificacion = ? ;",[id],
       function (err, results, fields) {
         if (err) {
+
+          console.log(err)
           //Error con la base de datos
           return res.status(500).json({
             success: false,
             result: err,
           });
         } else {
+
+          console.log("hecho")
           //Resultado de la consulta
           return res.status(200).json({
             success: true,
@@ -256,35 +254,49 @@ const deleteUser = async (req, res = response) => {
 const loginUser = async (req, res = response) => {
   try {
     //Son lo parámetros que se le envían a la petición para verificar las credenciales del usuario al loguearse
-    const {
-      usuario, 
-      contrasena, 
-    } = req.params;
-
+    const user= req.body.user;
+    const contrasena= req.body.password;
     //Consulta a ejecutar
-    var SQLLogin =  'SELECT * FROM usuario '
-    SQLLogin += '  WHERE usuario = \''+ usuario  + '\' AND contrasena = \''+contrasena+'\';';
+    
 
     const connection = userConnection();
     connection.query(
-      SQLLogin,
+      "SELECT * from Usuario where usuario=? AND contraseña=?;",
+        [user,contrasena],
       function (err, results, fields) {
+        
         if (err) {
           //Error con la base de datos
+          console.log(err);
           return res.status(500).json({
             success: false,
             result: err,
           });
-        } else {
+          
+        } 
+        
+        if(results.length > 0) {
           //Resultado de la consulta
-          return res.status(200).json({
+          /*return res.status(200).json({
             success: true,
             results
-          });
+          });*/
+          console.log("hola");
+          res.json({
+            auth:true,
+            user:user,
+            typeuser:results[0].Id_tipo,
+            //token:accessToken,
+        })
+        //res.send(result);
+            }
+            else{
+                res.json({auth:false,message:"Credenciales incorrectas"});
+            }
         }
-      }
+      
     );
-    connection.end();
+  
 
   } catch (e) {
     return res.status(500).json({
@@ -312,10 +324,7 @@ const typeUser = async (req, res = response) => {
           });
         } else {
           //Resultado de la consulta
-          return res.status(200).json({
-            success: true,
-            results
-          });
+          res.send(results);
         }
       }
     );
