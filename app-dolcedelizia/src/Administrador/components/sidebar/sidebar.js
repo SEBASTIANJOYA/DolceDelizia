@@ -11,7 +11,14 @@ const defaultProduct = {
     description: '',
 };
 
+const Logout=function(){
 
+  localStorage.clear();
+
+  
+
+  window.location.href="./homedolcedelizia"
+}
 
 var ValidarRutaPedidos=function(){
 
@@ -33,38 +40,7 @@ var ValidarRutaPedidos=function(){
 }
 
 const Sidebar = () => {
-/*
-    const[errorMessage,setErrorMessage] = useState("");
-    const[product, setProduct] = useState(defaultProduct);
-    const[products,setProducts] = useState([]);
-    const [onEditId, setEditId] = useState();
-  
-    const handleOnChange = (event, key) => {
-        setErrorMessage('');
-        setProduct({
-          ...product,
-          [key]: event.target.value,
-        });
-      };
-      
-      const handleOnClick = event => {
-        const isValid = product?.reference && product?.name !== '' && product?.description !== '';
-        const errorMessage = !isValid ? 'Los campos marcados con * son obligatorios' : '';
-        setErrorMessage(errorMessage);
-        if (isValid) {
-            setProducts([
-                ...products,
-                product
 
-            ]);
-            setProducts(defaultProduct);
-        }
-      };
-    
-      const handleOnClickCancel = () => {
-        setEditId(false);
-        //fetchProducts();
-      };*/
 
         return (
        
@@ -75,11 +51,15 @@ const Sidebar = () => {
           
           
           <ul className="nav">
-              <li ><NavLink to="/administrador/empleados"  className="text-dark rounded d-inline-block py-2 px-3" ><FaIcons.IoIosAlbums clasName="me-6"/>  Empleados</NavLink></li>
-              <li ><NavLink to="/administrador/productos"  className="text-dark rounded d-inline-block py-2 px-3" ><FaIcons2.BsFillBagFill clasName="me-6"/>  Productos</NavLink></li>
-              <li><NavLink to="/administrador/reporteventas"  className="text-dark rounded d-inline-block py-2 px-3"style={{width:'270px'}} ><FaIcons3.HiOutlineDocumentReport clasName="me-6"/>  Reporte de Ventas</NavLink></li>
-              <li><NavLink to={ValidarRutaPedidos()}className="text-dark rounded d-inline-block py-2 px-3" ><FaIcons4.MdBorderColor clasName="me-6"/>  Pedidos</NavLink></li>
-
+              <li ><NavLink to="/administrador/empleados"  className="text-dark rounded d-inline-block py-2 px-3" ><FaIcons.IoIosAlbums className="me-6"/>  Empleados</NavLink></li>
+              <li ><NavLink to="/administrador/productos"  className="text-dark rounded d-inline-block py-2 px-3" ><FaIcons2.BsFillBagFill className="me-6"/>  Productos</NavLink></li>
+              <li><NavLink to="/administrador/reporteventas"  className="text-dark rounded d-inline-block py-2 px-3"style={{width:'270px'}} ><FaIcons3.HiOutlineDocumentReport className="me-6"/>  Reporte de Ventas</NavLink></li>
+              <li><NavLink to={ValidarRutaPedidos()}className="text-dark rounded d-inline-block py-2 px-3" ><FaIcons4.MdBorderColor className="me-6"/>  Pedidos</NavLink></li>
+              <li ><NavLink to="/homedolcedelizia"  className="text-dark rounded d-inline-block py-2 px-3" 
+              onClick={Logout}
+              
+              
+              >Cerrar Sesion</NavLink></li>
 
           </ul>
 
