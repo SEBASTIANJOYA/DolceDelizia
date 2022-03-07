@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 //routes
 
 app.use('/user',require('./routes/user'));
-app.use(require('./routes/product'));
+app.use('/product',require('./routes/product'));
 app.use(require('./routes/stock'));
 app.use(require('./routes/detailBill'));
 app.use(require('./routes/bill'));
@@ -31,4 +31,5 @@ app.set('port', process.env.PORT || 3001)
 app.listen(app.get('port'), ()=>{
   console.log(`Server listen to port ${app.get('port')}`)
 })
+
 

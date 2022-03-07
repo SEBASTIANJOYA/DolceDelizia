@@ -2,11 +2,12 @@ const mysql = require('mysql');
 
 //Se crea la conexión con la BD 
 module.exports = () => {
+
   var db= mysql.createConnection({
     host : 'localhost',
-    database : 'dolceDelicia',
+    database : 'dolcedelizia',
     user : 'root',
-    password : 'root',
+    password : 'Sebas1997',
   });
 
   db.connect((err) => {
