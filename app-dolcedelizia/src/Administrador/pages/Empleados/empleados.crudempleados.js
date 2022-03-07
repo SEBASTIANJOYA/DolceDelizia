@@ -7,6 +7,7 @@ import Axios from 'axios'
 
 
 
+
 const rest=[{
     id: 2,
     nombre:"administrador"
@@ -101,7 +102,12 @@ const Empleado = ()=>{
    
     return(
             <Fragment>
+            
+            
             <Sidebar></Sidebar>
+            
+            
+            
             {
                 (localStorage.getItem('type_user')=="3")?
 
@@ -109,7 +115,7 @@ const Empleado = ()=>{
             <div><h1>NO DISPONIBLE</h1></div>
             :
             <div className="container empleados" >
-
+                
                 <form >
 
                     <header style={{paddingBottom:'20px'}}>Registro de Empleados</header>

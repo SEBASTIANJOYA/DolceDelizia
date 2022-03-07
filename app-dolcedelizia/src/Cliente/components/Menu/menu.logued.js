@@ -5,8 +5,10 @@ import logo from './dolcedelizia.png';
 
 
 const Logout=function(){
-
+    
     localStorage.clear();
+    
+    
 }
 
 const Home = () => {
