@@ -6,8 +6,6 @@ import Axios from 'axios'
 
 
 
-
-
 const rest=[{
     id: 2,
     nombre:"administrador"
@@ -16,7 +14,6 @@ const rest=[{
     id: 3,
     nombre:"empleado"
  }
-
 ]
 
 var items=[];  

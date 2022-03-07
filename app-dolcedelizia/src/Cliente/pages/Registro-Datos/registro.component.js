@@ -8,9 +8,6 @@ function onlyNums(e){
 
     return !( code < 48 || code > 57 );
 };
-
-
-
 const Registro = () => {
 
     const [user,setUser]= useState("");   

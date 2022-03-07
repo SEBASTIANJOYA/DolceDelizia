@@ -18,8 +18,8 @@ const router = Router();
 //Para las funciones que tienen como parámetros idProduct e idTupeProduct, hace referencia a idProduct = id_producto
 // e idTypeProduct = Id_tipo (tipo de de producto) llave foránea 
 router.get('/product/:idProduct/:idTypeProduct', [], getProduct); 
-router.get('/product', [], getProducts);
-router.post('/product', [], createProduct);
+router.get('/listaProductos', [], getProducts);
+router.post('/registroProducto', [], createProduct);
 router.put('/product/:idProduct/:idTypeProduct', [], updateProduct);
 router.delete('/product/:idProduct/:idTypeProduct', [], deleteProduct);
 router.get('/typeProduct', [],typeProduct);

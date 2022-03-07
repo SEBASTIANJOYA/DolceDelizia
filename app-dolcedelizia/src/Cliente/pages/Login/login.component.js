@@ -33,6 +33,7 @@ import logout from '../../../controllers/logout'
                     localStorage.setItem('user', response.data.user)
                     localStorage.setItem('date',date);
                     localStorage.setItem('type_user',response.data.typeuser)
+                    
                     if(response.data.typeuser=="1"){
                         window.location.href="./homedolcedelizia"
                     }

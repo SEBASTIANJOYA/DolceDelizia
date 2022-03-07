@@ -281,7 +281,7 @@ const loginUser = async (req, res = response) => {
             success: true,
             results
           });*/
-          console.log("hola");
+          //console.log("hola");
           res.json({
             auth:true,
             user:user,

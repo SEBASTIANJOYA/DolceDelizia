@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
+import Axios from 'axios'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-
+Axios.defaults.baseURL = 'https://backend-dolcedelizia.herokuapp.com/'
 ReactDOM.render(
   <React.StrictMode>
     <App />
