@@ -7,34 +7,41 @@ const createProduct = async (req, res = response) => {
     //Datos obtenidos a través de la acción POST, tomando los campos del frontend
     //IMPORTANTE: Tener en cuenta que estos campos se deben llamar igual a como estan definidos a continuación
     const {
-      id_producto,
+      
       nombre,
       valor_unitario,
       descripcion,
-      Id_tipo
+      
     } = req.body;
+    Id_tipo="2"
+
 
     //Consulta para guardar en la BD, en la tabla producto
-    var sSQLCreate = 'INSERT INTO producto (id_producto,nombre,valor_unitario,descripcion, '
+    /*var sSQLCreate = 'INSERT INTO producto (id_producto,nombre,valor_unitario,descripcion, '
     sSQLCreate += ' Id_tipo) VALUES (';
     sSQLCreate +=  id_producto + ', ';
     sSQLCreate += '\'' + nombre +'\', ';
     sSQLCreate +=  valor_unitario + ', ';
     sSQLCreate += '\'' + descripcion + '\', ';
-    sSQLCreate +=  Id_tipo + ');';
+    sSQLCreate +=  Id_tipo + ');';*/
 
     const connection = productConnection();
     connection.query(
-      sSQLCreate,
+      'INSERT INTO Producto(nombre,valor_unitario,descripcion,Id_tipo) values (?,?,?,?)',
+      [nombre,valor_unitario,descripcion,Id_tipo],
       function (err, results, fields) {
-
+        
         if (err) {
+
+          console.log(err);
           //Error con la base de datos
           return res.status(500).json({
             success: false,
             result: err,
           });
         } else {
+
+          console.log("hola mundo")
           //Respuesta de la petición
           return res.status(200).json({
             success: true,
@@ -104,9 +111,11 @@ const getProducts = async (req, res = response) => {
   try {
     const connection = productConnection();
     connection.query(
-      'SELECT * FROM producto;',
+      'SELECT * FROM Producto;',
       function (err, results, fields) {
+        
         if (err) {
+          
           //Error al ejecutar la consulta 
           return res.status(500).json({
             success: false,
@@ -114,10 +123,9 @@ const getProducts = async (req, res = response) => {
           });
         } else {
           //
-          return res.status(200).json({
-            success: true,
-            results
-          });
+          
+          res.send(results);
+          
         }
       }
     );
@@ -193,21 +201,24 @@ const deleteProduct = async (req, res = response) => {
     //Son lo parámetros que se le envían a la petición para identificar que registro borrar
     const {
       idProduct, //Identifidor (id) del producto
-      idTypeProduct, //tipo de producto
+      
     } = req.params;
     //Consulta a ejecutar
-    var SQLDelete =  'DELETE FROM producto '
-    SQLDelete += '  WHERE id_producto = '+ idProduct + ' AND Id_tipo = '+idTypeProduct+';';
+    var SQLDelete =  'DELETE FROM Producto '
+    SQLDelete += '  WHERE id_producto = '+ idProduct +';';
 
     const connection = productConnection();
     connection.query(
       SQLDelete,
       function (err, results, fields) {
+        
         if (err) {
+          console.log(err)
           //Error con la base de datos
           return res.status(500).json({
             success: false,
             result: err,
+
           });
         } else {
           //Resultado de la consulta

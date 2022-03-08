@@ -125,7 +125,7 @@ const Registro = () => {
                         </Col>
                         <Col sm>
                             
-                            <Form.Control placeholder="Contraseña" onChange={(e)=>
+                            <Form.Control type='password' placeholder="Contraseña" onChange={(e)=>
                             {
                                 setPassword(e.target.value);
                             }

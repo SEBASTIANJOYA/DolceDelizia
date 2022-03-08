@@ -35,14 +35,15 @@ const Empleado = ()=>{
     const [users,setUsers]= useState([]);
     const [type_user,setType_user]= useState("");
 
+
     
     useEffect(()=>{
 
-        Axios.get('http://localhost:3001/user/listaUsuarios',{ 
+        Axios.get('https://backend-dolcedelizia.herokuapp.com/user/listaUsuarios',{ 
     
-
         }).then((response)=>{
             
+            console.log(response)
            setUsers(response.data)
            
             
@@ -306,7 +307,7 @@ const Empleado = ()=>{
                 <div className="table-responsive container"style={{paddingTop:'50px',overflow:'auto',maxHeight: "30rem",
     }}>
 
-                    <header style={{paddingBottom:'20px'}}>EMPLEADOS REGISTRADOS</header>
+                    <header style={{paddingBottom:'20px'}}>Empleados Registrados</header>
 
                     <table className="table  table-striped" >
 

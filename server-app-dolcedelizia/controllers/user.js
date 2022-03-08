@@ -72,7 +72,7 @@ const getUser = async (req, res = response) => {
       idUsuario, //tipo usuario
     } = req.params;
     //Consulta a ejecutar
-    var SQLSearch =  'SELECT * FROM usuario '
+    var SQLSearch =  'SELECT * FROM Usuario '
     SQLSearch += '  WHERE identificacion = '+ id  + ' AND Id_tipo = '+idUsuario+';';
     console.log(SQLSearch)
     const connection = userConnection();
@@ -109,7 +109,7 @@ const getUsers = async (req, res = response) => {
   try {
     const connection = userConnection();
     connection.query(
-      'SELECT * FROM usuario;',
+      'SELECT * FROM Usuario;',
       function (err, results, fields) {
         if (err) {
           //Error al ejecutar la consulta 
@@ -219,7 +219,7 @@ const deleteUser = async (req, res = response) => {
     console.log(id)
     const connection = userConnection();
     connection.query(
-      "DELETE FROM usuario WHERE identificacion = ? ;",[id],
+      "DELETE FROM Usuario WHERE identificacion = ? ;",[id],
       function (err, results, fields) {
         if (err) {
 

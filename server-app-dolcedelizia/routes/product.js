@@ -21,7 +21,7 @@ router.get('/product/:idProduct/:idTypeProduct', [], getProduct);
 router.get('/listaProductos', [], getProducts);
 router.post('/registroProducto', [], createProduct);
 router.put('/product/:idProduct/:idTypeProduct', [], updateProduct);
-router.delete('/product/:idProduct/:idTypeProduct', [], deleteProduct);
+router.delete('/eliminarProduct/:idProduct/', [], deleteProduct);
 router.get('/typeProduct', [],typeProduct);
 
 
