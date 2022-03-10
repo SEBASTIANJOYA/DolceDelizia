@@ -1,6 +1,7 @@
 const { response } = require('express');
 const productConnection = require('../database/user');
 
+
 //Función para crear un nuevo producto en la BD
 const createProduct = async (req, res = response) => {
   try {
@@ -24,33 +25,45 @@ const createProduct = async (req, res = response) => {
     sSQLCreate +=  valor_unitario + ', ';
     sSQLCreate += '\'' + descripcion + '\', ';
     sSQLCreate +=  Id_tipo + ');';*/
-
+    
     const connection = productConnection();
-    connection.query(
-      'INSERT INTO Producto(nombre,valor_unitario,descripcion,Id_tipo) values (?,?,?,?)',
-      [nombre,valor_unitario,descripcion,Id_tipo],
-      function (err, results, fields) {
-        
-        if (err) {
+    
+    
+   
+      
+      
 
-          console.log(err);
-          //Error con la base de datos
-          return res.status(500).json({
-            success: false,
-            result: err,
-          });
-        } else {
+        connection.query(
+          'INSERT INTO Producto(nombre,valor_unitario,descripcion,Id_tipo) values (?,?,?,?)',
+          [nombre,valor_unitario,descripcion,Id_tipo],
+          function (err, results, fields) {
+            
+            if (err) {
+            console.log("verificar ")
+              console.log(err);
+              //Error con la base de datos
+              return res.status(500).json({
+                success: false,
+                result: err,
+              });
+            } else {
+    
+              
+              //Respuesta de la petición
+              return res.status(200).json({
+                success: true,
+                result: results,
+              });
+    
+            }
+          }
+        );
 
-          console.log("hola mundo")
-          //Respuesta de la petición
-          return res.status(200).json({
-            success: true,
-            result: results,
-          });
 
-        }
-      }
-    );
+      
+      
+    
+    
     //Se cierra la conexión con la BD
     connection.end();
 
@@ -81,6 +94,7 @@ const getProduct = async (req, res = response) => {
     connection.query(
       SQLSearch,
       function (err, results, fields) {
+        console.log("holamundo")
         if (err) {
           //Error con la base de datos
           return res.status(500).json({

@@ -39,7 +39,7 @@ const Empleado = ()=>{
     
     useEffect(()=>{
 
-        Axios.get('https://backend-dolcedelizia.herokuapp.com/user/listaUsuarios',{ 
+        Axios.get('http://localhost:3001/user/listaUsuarios',{ 
     
         }).then((response)=>{
             
@@ -54,8 +54,11 @@ const Empleado = ()=>{
 
     const addUsers=()=>{
 
+        
+        
 
-        Axios.post('http://localhost:3001/user/registroCliente',{
+
+        Axios.post('http://localhost:3001/registroCliente',{
             usuario:user,
             contrasena:password,
             identificacion: cedula,

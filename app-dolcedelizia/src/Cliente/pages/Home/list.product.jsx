@@ -11,11 +11,11 @@ const list = (props) => {
                     props.list.map(item =>
                         
                     <Producto
-                        key={item.id}
-                        id={item.id}
+                        key={item.id_producto}
+                        id={item.id_producto}
                         nombre={item.nombre}
-                        precio={item.precio}
-                        img={item.img}
+                        precio={item.valor_unitario}
+                        
                     
                     />    
                     )

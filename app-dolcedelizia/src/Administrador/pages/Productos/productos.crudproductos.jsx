@@ -33,19 +33,39 @@ const Producto = ()=>{
         
         const Addproducts=()=>{
 
-            Axios.post('http://localhost:3001/product/registroProducto',{
-            nombre:name,
-            descripcion:descripcion,
-            valor:valorunitario
-            })
-            .then((response)=>{
+            var verificar=false;
 
-                console.log(response);
-
+            products.map(value=>{
                 
-
-
+                if(value.nombre==name){
+                   verificar=true
+                }
             })
+            
+           if(verificar==true){
+
+                alert("Producto ya Registrado")
+           }
+           else{
+            Axios.post('http://localhost:3001/product/registroProducto',{
+
+            
+                nombre:name, 
+                descripcion:descripcion,
+                valor:valorunitario
+                })
+                .then((response)=>{
+    
+                    alert(response.data)
+    
+                    console.log(response);
+    
+                    
+    
+    
+                })
+           }
+           
 
     
 
