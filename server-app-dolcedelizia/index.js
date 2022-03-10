@@ -24,6 +24,7 @@ app.use('/product',require('./routes/product'));
 app.use(require('./routes/stock'));
 app.use(require('./routes/detailBill'));
 app.use(require('./routes/bill'));
+app.use(require('./routes/category'));
 
 
 //Se define el puerto por el que va a correr el servidor
