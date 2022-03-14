@@ -14,12 +14,14 @@ const createProductStock = async (req, res = response) => {
     } = req.body;
 
     //Consulta para guardar en la BD, en la tabla inventario
-    var sSQLCreate = 'INSERT INTO inventario (id_producto,Id_tipo,cantidad,porcentaje_descuento) VALUES ( '
-    sSQLCreate +=  id_producto + ', ';
+    var sSQLCreate = 'INSERT INTO Inventario (id_producto,Id_tipo,cantidad,porcentaje_descuento) VALUES ( ?,?,?,?)'
+    [id_producto,Id_tipo,cantidad,porcentaje_descuento]
+  
+    /*sSQLCreate +=  id_producto + ', ';
     sSQLCreate +=  Id_tipo +', ';
     sSQLCreate +=  cantidad + ', ';
     sSQLCreate +=  porcentaje_descuento + ');';
-
+*/
     const connection = stockConnection();
     connection.query(
       sSQLCreate,
@@ -64,7 +66,7 @@ const getProductStock = async (req, res = response) => {
       idTypeProduct, //tipo de producto (Id_tipo) llave foránea
     } = req.params;
     //Consulta a ejecutar
-    var SQLSearch =  'SELECT * FROM inventario '
+    var SQLSearch =  'SELECT * FROM Inventario '
     SQLSearch += '  WHERE id_producto = '+ idProduct  + ' AND Id_tipo = '+idTypeProduct+';';
 
     const connection = stockConnection();
@@ -101,7 +103,7 @@ const getProductsStock = async (req, res = response) => {
   try {
     const connection = stockConnection();
     connection.query(
-      'SELECT * FROM inventario;',
+      'SELECT * FROM Inventario;',
       function (err, results, fields) {
         if (err) {
           //Error al ejecutar la consulta 
@@ -146,7 +148,7 @@ const updateProductStock = async (req, res = response) => {
       idTypeProduct, //tipo de producto (Id_tipo) llave foránea
     } = req.params;
     //Consulta a ejecutar
-    var SQLUpdate =  'UPDATE inventario SET '
+    var SQLUpdate =  'UPDATE Inventario SET '
     SQLUpdate += 'id_producto = ' + id_producto + ', ' 
     SQLUpdate += ' Id_tipo = ' + Id_tipo + ', ' 
     SQLUpdate += ' cantidad = ' + cantidad + ', ' 
@@ -191,7 +193,7 @@ const deleteProductStock = async (req, res = response) => {
       idTypeProduct, //tipo de producto (Id_tipo)
     } = req.params;
     //Consulta a ejecutar
-    var SQLDelete =  'DELETE FROM inventario '
+    var SQLDelete =  'DELETE FROM Inventario '
     SQLDelete += '  WHERE id_producto = '+ idProduct + ' AND Id_tipo = '+idTypeProduct+';';
 
     const connection = stockConnection();
