@@ -9,7 +9,7 @@ const PedidosRealizados = ()=>{
     return(
             <Fragment>
 
-            <Sidebar></Sidebar>
+            
             
             <div className="container pedidos" >
                 <Navbar></Navbar>

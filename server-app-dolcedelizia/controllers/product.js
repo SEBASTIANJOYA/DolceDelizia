@@ -12,16 +12,22 @@ const createProduct = async (req, res = response) => {
       valor_unitario,
       descripcion,
       cantidad, 
-      Id_tipo 
+      categoria 
     } = req.body;
     const porcentaje_descuento = '0.10'
+
+
+
+
     //Consulta para guardar en la BD, en la tabla producto
     
     const connection = productConnection();
 
         connection.query(
+
           'INSERT INTO Producto(nombre,valor_unitario,descripcion,cantidad,porcentaje_descuento,Id_tipo) values (?,?,?,?,?,?)',
-          [nombre,valor_unitario,descripcion,cantidad,porcentaje_descuento ,Id_tipo],
+          [nombre,valor_unitario,descripcion,cantidad,porcentaje_descuento ,categoria],
+
           function (err, results, fields) {
             
             if (err) {
@@ -103,8 +109,13 @@ const getProduct = async (req, res = response) => {
 const getProducts = async (req, res = response) => {
   try {
     const connection = productConnection();
+    var query='select p.id_producto, p.nombre,p.descripcion,p.valor_unitario,p.cantidad,p.porcentaje_descuento,i.nombre as categoria , p.Id_tipo from Producto p '
+
+    query += 'inner join TipoProducto i ' 
+    
+   query+=  'on p.Id_tipo=i.Id_tipo;'
     connection.query(
-      'SELECT * FROM Producto;',
+      query,
       function (err, results, fields) {
         
         if (err) {
@@ -234,16 +245,18 @@ const deleteProduct = async (req, res = response) => {
   }
 };
 
-//Método para consultar los tipos de usuarios
+//Método para consultar los tipos de productos
 const typeProduct = async (req, res = response) => {
   try {
     //Consulta a ejecutar
-    var SQLTipoProducto =  'SELECT * FROM tipoproducto; ';
+    var SQLTipoProducto =  'SELECT * FROM TipoProducto; ';
 
     const connection = productConnection();
     connection.query(
       SQLTipoProducto,
       function (err, results, fields) {
+
+        
         if (err) {
           //Error con la base de datos
           return res.status(500).json({
@@ -251,11 +264,7 @@ const typeProduct = async (req, res = response) => {
             result: err,
           });
         } else {
-          //Resultado de la consulta
-          return res.status(200).json({
-            success: true,
-            results
-          });
+          res.send(results)
         }
       }
     );

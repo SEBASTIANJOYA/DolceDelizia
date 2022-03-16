@@ -6,7 +6,7 @@ const ControlVentas = ()=>{
     return(
             <Fragment>
 
-            <Sidebar></Sidebar>
+            
             <a>CRUD Ventas</a>
 
             </Fragment>

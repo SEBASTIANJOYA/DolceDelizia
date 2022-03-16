@@ -105,9 +105,6 @@ const Empleado = ()=>{
             <Fragment>
             
             
-            <Sidebar></Sidebar>
-            
-            
             
             {
                 (localStorage.getItem('type_user')=="3")?
@@ -115,7 +112,7 @@ const Empleado = ()=>{
 
             <div><h1>NO DISPONIBLE</h1></div>
             :
-            <div className="container empleados" >
+            <div className="container empleados"  >
                 
                 <form >
 
@@ -131,7 +128,7 @@ const Empleado = ()=>{
                                     setFirst_name(e.target.value);
                                     
                                 }}
-                             ></input>
+                            required ></input>
 
                          </div>
 
@@ -143,7 +140,7 @@ const Empleado = ()=>{
 
                                     setSecond_name(e.target.value)
                                 }}
-                             ></input>
+                                required></input>
 
                          </div>
 
@@ -156,7 +153,7 @@ const Empleado = ()=>{
 
                                     setSurname(e.target.value)
                                 }}
-                             ></input>
+                                required></input>
 
                          </div>
 
@@ -174,7 +171,7 @@ const Empleado = ()=>{
                                     setSecond_surname(e.target.value)
                                 }}
                              
-                             ></input>
+                                required></input>
 
                          </div>
 
@@ -186,7 +183,7 @@ const Empleado = ()=>{
                                     setEmail(e.target.value);
                                 }}
                                 
-                             ></input>
+                                required></input>
 
                          </div>
 
@@ -199,7 +196,7 @@ const Empleado = ()=>{
                                     setDirection(e.target.value);
                                 }}
                              
-                             ></input>
+                                required></input>
 
                          </div>
                      </div>
@@ -220,7 +217,7 @@ const Empleado = ()=>{
                                     setCedula(e.target.value)
                                 }}
                             
-                            ></input>
+                                required></input>
 
 
                           </div>
@@ -236,7 +233,7 @@ const Empleado = ()=>{
 
                                 }}
                              
-                             ></input>
+                                required></input>
 
 
                          </div>
@@ -251,7 +248,7 @@ const Empleado = ()=>{
 
                                     setPassword(e.target.value);
                                 }}
-                             ></input>
+                                required></input>
 
 
                          </div>

@@ -3,11 +3,12 @@ import MenuLogout from './menu.logout';
 import MenuLogged from './menu.logued';
 const Home = () => {
 
-  const localStorage=window.localStorage.length;
+  const localStorage=window.localStorage.getItem('user');
+  
     return (
         <Fragment>
           {
-          (localStorage==0)?
+          (localStorage==null)?
           <MenuLogout></MenuLogout>
           :<MenuLogged></MenuLogged>
 
