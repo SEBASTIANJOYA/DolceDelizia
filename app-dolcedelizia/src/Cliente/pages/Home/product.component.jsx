@@ -8,10 +8,7 @@ const Producto = (props) => {
     const [item,setItem]= useState([])
     const [amount,setAmount]=useState(0)
     var data=JSON.parse(localStorage.getItem('items'))
-    const value={
-
-        number_items:data.length
-    }
+    
     
     const addCar=(id,nombre,precio,descuento)=>{
 
