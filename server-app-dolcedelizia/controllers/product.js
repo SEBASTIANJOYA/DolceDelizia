@@ -2,44 +2,29 @@ const { response } = require('express');
 const productConnection = require('../database/user');
 
 
-//Función para crear un nuevo producto en la BD
+//Función para crear un nuevo producto en la BD y asociarlo al invetario
 const createProduct = async (req, res = response) => {
   try {
     //Datos obtenidos a través de la acción POST, tomando los campos del frontend
     //IMPORTANTE: Tener en cuenta que estos campos se deben llamar igual a como estan definidos a continuación
     const {
-      
       nombre,
       valor_unitario,
       descripcion,
-      
+      cantidad, 
+      Id_tipo 
     } = req.body;
-    Id_tipo="2"
-
-
+    const porcentaje_descuento = '0.10'
     //Consulta para guardar en la BD, en la tabla producto
-    /*var sSQLCreate = 'INSERT INTO producto (id_producto,nombre,valor_unitario,descripcion, '
-    sSQLCreate += ' Id_tipo) VALUES (';
-    sSQLCreate +=  id_producto + ', ';
-    sSQLCreate += '\'' + nombre +'\', ';
-    sSQLCreate +=  valor_unitario + ', ';
-    sSQLCreate += '\'' + descripcion + '\', ';
-    sSQLCreate +=  Id_tipo + ');';*/
     
     const connection = productConnection();
-    
-    
-   
-      
-      
 
         connection.query(
-          'INSERT INTO Producto(nombre,valor_unitario,descripcion,Id_tipo) values (?,?,?,?)',
-          [nombre,valor_unitario,descripcion,Id_tipo],
+          'INSERT INTO Producto(nombre,valor_unitario,descripcion,cantidad,porcentaje_descuento,Id_tipo) values (?,?,?,?,?,?)',
+          [nombre,valor_unitario,descripcion,cantidad,porcentaje_descuento ,Id_tipo],
           function (err, results, fields) {
             
             if (err) {
-            console.log("verificar ")
               console.log(err);
               //Error con la base de datos
               return res.status(500).json({
@@ -47,25 +32,19 @@ const createProduct = async (req, res = response) => {
                 result: err,
               });
             } else {
-    
-              
+                
               //Respuesta de la petición
               return res.status(200).json({
                 success: true,
-                result: results,
+                result: results
               });
     
             }
           }
         );
 
-
-      
-      
-    
-    
-    //Se cierra la conexión con la BD
-    connection.end();
+    //Se cierra la conexión con la BD, al guardar el producto
+    connection.end();   
 
   } catch (e) {
     console.log(e);
@@ -87,7 +66,7 @@ const getProduct = async (req, res = response) => {
       idTypeProduct, //tipo de producto (Id_tipo) llave foránea
     } = req.params;
     //Consulta a ejecutar
-    var SQLSearch =  'SELECT * FROM producto '
+    var SQLSearch =  'SELECT * FROM Producto '
     SQLSearch += '  WHERE id_producto = '+ idProduct  + ' AND Id_tipo = '+idTypeProduct+';';
 
     const connection = productConnection();
@@ -159,10 +138,11 @@ const updateProduct = async (req, res = response) => {
   try {
     //Los datos a actualizar
     const {
-      id_producto,
       nombre,
       valor_unitario,
       descripcion,
+      cantidad,
+      porcentaje_descuento,
       Id_tipo,
     } = req.body;
 
@@ -172,11 +152,12 @@ const updateProduct = async (req, res = response) => {
       idTypeProduct, //tipo de producto (Id_tipo) llave foránea
     } = req.params;
     //Consulta a ejecutar
-    var SQLUpdate =  'UPDATE producto SET '
-    SQLUpdate += 'id_producto = ' + id_producto + ', ' 
+    var SQLUpdate =  'UPDATE Producto SET '
     SQLUpdate += ' nombre = \'' + nombre + '\', ' 
     SQLUpdate += ' valor_unitario = ' + valor_unitario + ', ' 
     SQLUpdate += ' descripcion = \'' + descripcion + '\', ' 
+    SQLUpdate += ' cantidad = \'' + cantidad + '\', ' 
+    SQLUpdate += ' porcentaje_descuento = \'' + porcentaje_descuento + '\', ' 
     SQLUpdate += ' Id_tipo = ' + Id_tipo
     SQLUpdate += '  WHERE id_producto = '+ idProduct  + ' AND Id_tipo = '+idTypeProduct+';';
 
