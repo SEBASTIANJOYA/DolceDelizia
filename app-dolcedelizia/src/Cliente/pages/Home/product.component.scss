@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth@92.4&display=swap');
 .item{
     
     display: inline-block;
@@ -18,13 +20,14 @@
 
 .item .title{
     padding: 10px;
-    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     
 }
 
 .item .prize{
-    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
     font-size: 18px;
+    font-weight:900;
     
 }
