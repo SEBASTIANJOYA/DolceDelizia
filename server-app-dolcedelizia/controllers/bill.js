@@ -7,15 +7,11 @@ const createBill = async (req, res = response) => {
     //Datos obtenidos a través de la acción POST, tomando los campos del frontend
     //IMPORTANTE: Tener en cuenta que estos campos se deben llamar igual a como estan definidos a continuación
     const {
-      id,
-      id_detFactura,
       fecha
     } = req.body;
 
     //Consulta para guardar en la BD, en la tabla factura
-    var sSQLCreate = 'INSERT INTO factura (id,id_detFactura,fecha) VALUES ( '
-    sSQLCreate +=  id + ', ';
-    sSQLCreate +=  id_detFactura +', ';
+    var sSQLCreate = 'INSERT INTO Factura (fecha) VALUES ( '
     sSQLCreate += "\'" + fecha + '\' );';
 
     const connection = billConnection();
@@ -60,8 +56,8 @@ const getBill = async (req, res = response) => {
       idBill //Identificador de la factura (id)
     } = req.params;
     //Consulta a ejecutar
-    var SQLSearch =  'SELECT * FROM factura '
-    SQLSearch += '  WHERE id = '+ idBill+';' ;
+    var SQLSearch =  'SELECT * FROM Factura '
+    SQLSearch += '  WHERE id = '+ id+';' ;
 
     const connection = billConnection();
     connection.query(
@@ -97,7 +93,7 @@ const getBills = async (req, res = response) => {
   try {
     const connection = billConnection();
     connection.query(
-      'SELECT * FROM factura',
+      'SELECT * FROM Factura',
       function (err, results, fields) {
         if (err) {
           //Error al ejecutar la consulta 
@@ -131,7 +127,6 @@ const updateBill= async (req, res = response) => {
     //Datos a actualizar
     const {
       id,
-      id_detFactura,
       fecha
     } = req.body;
 
@@ -140,9 +135,8 @@ const updateBill= async (req, res = response) => {
       idBill //Identificador de la factura (id)
     } = req.params;
     //Consulta a ejecutar
-    var SQLUpdate =  'UPDATE factura SET '
+    var SQLUpdate =  'UPDATE Factura SET '
     SQLUpdate += 'id = ' + id + ', ' 
-    SQLUpdate += 'id_detFactura = ' + id_detFactura + ', ' 
     SQLUpdate += 'fecha = \'' + fecha +'\' '   
     SQLUpdate += 'WHERE id = '+ idBill +';';
 
@@ -183,7 +177,7 @@ const deleteBill = async (req, res = response) => {
       idBill //Identificador de la factura (id)
     } = req.params;
     //Consulta a ejecutar
-    var SQLDelete =  'DELETE FROM factura '
+    var SQLDelete =  'DELETE FROM Factura '
     SQLDelete += '  WHERE id = '+ idBill + ';';
 
     const connection = billConnection();
@@ -214,6 +208,7 @@ const deleteBill = async (req, res = response) => {
     });
   }
 };
+
 
 //Se exportan las funciones definidas en la API (CRUD) 
 module.exports = {

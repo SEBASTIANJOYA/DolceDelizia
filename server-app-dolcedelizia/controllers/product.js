@@ -156,8 +156,8 @@ const updateProduct = async (req, res = response) => {
     SQLUpdate += ' nombre = \'' + nombre + '\', ' 
     SQLUpdate += ' valor_unitario = ' + valor_unitario + ', ' 
     SQLUpdate += ' descripcion = \'' + descripcion + '\', ' 
-    SQLUpdate += ' cantidad = \'' + cantidad + '\', ' 
-    SQLUpdate += ' porcentaje_descuento = \'' + porcentaje_descuento + '\', ' 
+    SQLUpdate += ' cantidad = ' + cantidad + ', ' 
+    SQLUpdate += ' porcentaje_descuento = ' + porcentaje_descuento + ', ' 
     SQLUpdate += ' Id_tipo = ' + Id_tipo
     SQLUpdate += '  WHERE id_producto = '+ idProduct  + ' AND Id_tipo = '+idTypeProduct+';';
 

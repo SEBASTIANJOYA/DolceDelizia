@@ -7,7 +7,8 @@ const {
   getDetailBill,
   getDetailsBill,
   updateDetailBill,
-  deleteDetailBill
+  deleteDetailBill,
+  realizarPedido
 
 } = require('../controllers/detailBill');
 
@@ -21,5 +22,6 @@ router.get('/detail', [], getDetailsBill);
 router.post('/detail', [], createDetailBill);
 router.put('/detail/:idDetailBill', [], updateDetailBill);
 router.delete('/detail/:idDetailBill', [], deleteDetailBill);
+router.post('/detail/pedido', [], realizarPedido);
 
 module.exports = router;
