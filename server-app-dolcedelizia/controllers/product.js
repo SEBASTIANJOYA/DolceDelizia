@@ -113,7 +113,7 @@ const getProducts = async (req, res = response) => {
 
     query += 'inner join TipoProducto i ' 
     
-   query+=  'on p.Id_tipo=i.Id_tipo;'
+   query+=  'on p.Id_tipo=i.Id_tipo AND cantidad > 0;'
     connection.query(
       query,
       function (err, results, fields) {
