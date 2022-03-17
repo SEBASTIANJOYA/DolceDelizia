@@ -1,9 +1,10 @@
 .Registro{
-    width:5000px;
+    
+    
 
     text-align:center;
     align-items:center;
-    
+    display:flex;
 }
 
 .Registro Form{

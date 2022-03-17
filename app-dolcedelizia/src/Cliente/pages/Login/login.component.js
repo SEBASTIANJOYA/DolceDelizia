@@ -62,10 +62,10 @@ import logout from '../../../controllers/logout'
 
         <Fragment>
             {
-        (logout()||localStorage.length===0)?
+        (logout()||!localStorage.getItem("user"))?
         
         <div className="Login">
-        <Menu></Menu>
+        
         <Form onSubmit={handleSubmit(onsubmit)}
               style={{ widthmax: '1500px', 
                  height: '100%'}}

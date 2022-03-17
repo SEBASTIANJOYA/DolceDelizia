@@ -8,7 +8,7 @@ const Facturacion = () =>{
     return (
         <Fragment>
 
-            <Sidebar></Sidebar>
+            
 
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Menu from './Cliente/components/Menu/menu.component'
 import './App.scss';
 import './Cliente/pages/Login/login.css';
 import PublicRoutes from './Routes/routes.public'
@@ -8,7 +8,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import Footer from "./Cliente/components/footer/footer.component";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import isAuth from './controllers/logout'
-
+import Sidebar from './Administrador/components/sidebar/sidebar.js'
 
 function App() {
   return (
@@ -19,7 +19,24 @@ function App() {
     
       <header className="App-header">
         {
-           (isAuth()==true||!localStorage.getItem("type_user") || localStorage.getItem("type_user")=="1")?
+
+          (localStorage.getItem("type_user")=="2" || localStorage.getItem("type_user")=="3")?
+          <Sidebar/>
+          
+          :
+          <Menu/>
+
+        }
+
+        
+       
+        
+      </header>
+
+      <section className="App-main">
+
+      {
+           (isAuth()==true||localStorage.getItem("type_user")==null || localStorage.getItem("type_user")=="1")?
 
            <PublicRoutes/>
            :
@@ -27,10 +44,6 @@ function App() {
 
 
         }
-      
-      </header>
-
-      <section className="App-main">
       </section>
 
       

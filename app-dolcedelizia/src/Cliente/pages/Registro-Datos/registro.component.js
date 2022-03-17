@@ -47,7 +47,7 @@ const Registro = () => {
     return (
       
         <div className="Registro"> 
-            <Menu></Menu>
+            
             <Form>
                 <br/>
             <h3 style={{color: 'black'}}>REGISTRO DE DATOS</h3>
