@@ -41,10 +41,14 @@ const createUser = async (req, res = response) => {
         } else{
           console.log("como");
           //Respuesta de la petición
+
+         
           return res.status(200).json({
             success: true,
             result: results,
           });
+
+          
 
         }
       }

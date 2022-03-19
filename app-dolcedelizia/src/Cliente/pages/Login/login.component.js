@@ -86,7 +86,7 @@ import logout from '../../../controllers/logout'
                     name="usuario"
                     style={{color: 'black',paddingtop: '10px' }} 
                     type="text" 
-                    placeholder="Enter User" 
+                    placeholder="Ingresa Usuario." 
 
                     {...register("usuario", { 
                         required:{
@@ -120,7 +120,7 @@ import logout from '../../../controllers/logout'
                             }
                         })}
                         type="password" 
-                        placeholder="Password" 
+                        placeholder="Ingresa Contraseña." 
                         
                         onChange={(e)=>{
                             setPasswordLogin(e.target.value);

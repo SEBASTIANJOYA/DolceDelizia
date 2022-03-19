@@ -4,8 +4,67 @@ import Sidebar from '../../components/sidebar/sidebar'
 import './empleados.scss';
 import Axios from 'axios'
 
+function onlyNums(e){
+    const code = window.event ? e.which : e.keyCode;
 
+    return !( code < 48 || code > 57 );
+}
 
+function validacionUsuario(){
+    var subject = document.getElementById("input-user").value; 
+    var regex = /^[^$%&|/*+<>#()=?¡¿ ]*$/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar caracteres especiales")
+    }else{
+    }
+}
+
+function validacionPrimerNombre(){
+    var subject = document.getElementById("input-name1").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
+function validacionSegundoNombre(){
+    var subject = document.getElementById("input-name2").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
+function validacionPrimerApellido(){
+    var subject = document.getElementById("input-lastname1").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
+function validacionSegundoApellido(){
+    var subject = document.getElementById("input-lastname2").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
+function validaciondireccion(){
+    var subject = document.getElementById("").value; 
+    var regex = /^[a-zA-Z ]+$/;
+    if(regex.test(subject) == true) { 
+        alert("Valido");
+    }else{
+        alert("No se puede ingresar numeros")
+    }
+
+}
 const rest=[{
     id: 2,
     nombre:"administrador"
@@ -125,6 +184,7 @@ const Empleado = ()=>{
                              <label className="label-name1">Primer Nombre</label>
                              <input className="form-control" id="input-name1"placeholder="Primer Nombre" type="text"
                                 onChange={(e)=>{
+                                    validacionPrimerNombre()
                                     setFirst_name(e.target.value);
                                     
                                 }}
@@ -137,7 +197,7 @@ const Empleado = ()=>{
                              <label className="label-name2">Segundo Nombre</label>
                              <input className="form-control" id="input-name2"placeholder="Segundo Nombre" type="text"
                                 onChange={(e)=>{
-
+                                    validacionSegundoNombre()
                                     setSecond_name(e.target.value)
                                 }}
                                 required></input>
@@ -150,7 +210,7 @@ const Empleado = ()=>{
                              <input className="form-control" id="input-lastname1"placeholder="Primer Apellido" type="text"
                              
                                 onChange={(e)=>{
-
+                                    validacionPrimerApellido()
                                     setSurname(e.target.value)
                                 }}
                                 required></input>
@@ -165,9 +225,10 @@ const Empleado = ()=>{
                          <div className="form-group col-md-4">
                              <br></br>
                              <label className="label-lastname2">Segundo Apellido</label>
-                             <input className="form-control" id="input-lastname2"placeholder="Segundo Apellido" type="text"
+                             <input className="form-control" id="input-lastname2" placeholder="Segundo Apellido" type="text"
+                               
                                 onChange={(e)=>{
-
+                                    validacionSegundoApellido()
                                     setSecond_surname(e.target.value)
                                 }}
                              
@@ -192,7 +253,6 @@ const Empleado = ()=>{
                              <label className="label-direction">Direccion</label>
                              <input className="form-control" id="input-direction"placeholder="Direccion" type="text"
                                 onChange={(e)=>{
-
                                     setDirection(e.target.value);
                                 }}
                              
@@ -207,7 +267,7 @@ const Empleado = ()=>{
 
                             <br></br>
                             <label className="label-user">Cedula</label>
-                            <input className="form-control" id="input-cc"placeholder="Cedula" type="text" onKeypress={(e)=>{
+                            <input className="form-control" id="input-cc"placeholder="Cedula" type="number" onKeypress={(e)=>{
                                     if (e.charCode >= 48 && e.charCode <= 57) {
                                         e.preventDefault()
                                      }
@@ -228,7 +288,7 @@ const Empleado = ()=>{
                              <label className="label-user">Usuario</label>
                              <input className="form-control" id="input-user"placeholder="Usuario" type="text"
                                 onChange={(e)=>{
-
+                                    validacionUsuario()
                                     setUser(e.target.value);
 
                                 }}

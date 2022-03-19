@@ -31,16 +31,9 @@ const Home = () => {
               <Col lg={4}>
               <Nav.Link href="/homedolcedelizia"><b>INICIO</b></Nav.Link>
               </Col>
-              <Col lg={4}>
-              <Nav.Link href=""><b>QUIENES SOMOS</b></Nav.Link>
+              <Col lg={5}>
+              <Nav.Link href="/quienessomos"><b>QUIENES SOMOS</b></Nav.Link>
               </Col>
-              <Col lg={4}>
-              <Nav.Link href=""><b>CONTACTOS</b></Nav.Link>
-              </Col>
-              <Col lg={4}>
-              <Nav.Link href=""><b>AYUDA</b></Nav.Link>
-              </Col>
-              
               <Col lg={3}>
 
               <Nav.Link href="/login"><b>LOGIN</b></Nav.Link>

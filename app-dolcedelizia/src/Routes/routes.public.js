@@ -5,7 +5,7 @@ import Login from '../Cliente/pages/Login/login.component';
 import Registro from '../Cliente/pages/Registro-Datos/registro.component';
 import HomeDolceDelizia from '../Cliente/pages/Home/home.component.jsx';
 import Carrito from '../Cliente/pages/Carrito/carrito.component'
-
+import QuienesSomos from '../Cliente/pages/QuienesSomos/quienessomos.component.jsx'
 const Routes = () => {
     return(
             <Switch>
@@ -24,6 +24,9 @@ const Routes = () => {
                     <Login></Login>
                 </Route>
 
+                <Route exact path="/quienessomos">
+                    <QuienesSomos></QuienesSomos>
+                </Route>
                 <Route exact path="/registrodatos">
                     
                     <Registro></Registro>

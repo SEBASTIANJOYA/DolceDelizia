@@ -3,11 +3,44 @@ import {Form,Col,Row,Button} from "react-bootstrap";
 import './registro.css'
 import Menu from '../../components/Menu/menu.component';
 import Axios from 'axios'
-function onlyNums(e){
-    const code = window.event ? e.which : e.keyCode;
 
-    return !( code < 48 || code > 57 );
-};
+function validacionPrimerNombre(){
+    var subject = document.getElementById("nameone").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
+function validacionSegundoNombre(){
+    var subject = document.getElementById("nametwo").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
+function validacionPrimerApellido(){
+    var subject = document.getElementById("lastnameone").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
+function validacionSegundoApellido(){
+    var subject = document.getElementById("lastnametwo").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
+
 const Registro = () => {
 
     const [user,setUser]= useState("");   
@@ -39,27 +72,30 @@ const Registro = () => {
             email:email
 
         }).then((response)=>{
-            console.log(response);
-            window.location.href="./login"
+            
+            
+            
         });
-    
+        window.location.href="./login"
     }
     return (
       
         <div className="Registro"> 
             
-            <Form>
+            
+               
+    
+                <Form action='./login' onSubmit={register}>
+
                 <br/>
             <h3 style={{color: 'black'}}>REGISTRO DE DATOS</h3>
 
             <br/>
-    
-                <Form>
                 
                     <Row>
                         <Col sm lg={3} >
                             
-                            <Form.Control placeholder="Cedula"  onChange={(e)=>
+                            <Form.Control required type='number' placeholder="Cedula"  onChange={(e)=>
                             {
                                 setCedula(e.target.value);
                             }
@@ -67,16 +103,18 @@ const Registro = () => {
                         </Col>
                         <Col sm>
                             
-                            <Form.Control placeholder="Primer Nombre" onChange={(e)=>
+                            <Form.Control required id='nameone' placeholder="Primer Nombre" onChange={(e)=>
                             {
+                                validacionPrimerNombre();
                                 setFirst_name(e.target.value);
                             }
                             } />
                         </Col>
                         <Col>
                             
-                            <Form.Control placeholder="Segundo Nombre" onChange={(e)=>
+                            <Form.Control required id='nametwo' placeholder="Segundo Nombre" onChange={(e)=>
                             {
+                                validacionSegundoNombre();
                                 setSecond_name(e.target.value);
                             }
                             }/>
@@ -88,16 +126,18 @@ const Registro = () => {
                     <Row>
                         <Col sm>
                             
-                            <Form.Control placeholder="Primer Apellido" onChange={(e)=>
+                            <Form.Control required id='lastnameone' placeholder="Primer Apellido" onChange={(e)=>
                             {
+                                validacionPrimerApellido();
                                 setSurname(e.target.value);
                             }
                             }/>
                         </Col>
                         <Col sm>
                             
-                            <Form.Control placeholder="Segundo Apellido" onChange={(e)=>
+                            <Form.Control required id='lastnametwo' placeholder="Segundo Apellido" onChange={(e)=>
                             {
+                                validacionSegundoApellido();
                                 setSecond_surname(e.target.value);
                             }
                             }/>
@@ -105,7 +145,7 @@ const Registro = () => {
                         
                         <Col sm>
                             
-                            <Form.Control placeholder="Email" onChange={(e)=>
+                            <Form.Control required type='email' placeholder="Email" onChange={(e)=>
                             {
                                 setEmail(e.target.value);
                             }
@@ -117,7 +157,7 @@ const Registro = () => {
                     <Row>
                         <Col sm>
                             
-                            <Form.Control placeholder="Usuario" onChange={(e)=>
+                            <Form.Control required type='text' placeholder="Usuario" onChange={(e)=>
                             {
                                 setUser(e.target.value);
                             }
@@ -125,7 +165,7 @@ const Registro = () => {
                         </Col>
                         <Col sm>
                             
-                            <Form.Control type='password' placeholder="Contraseña" onChange={(e)=>
+                            <Form.Control required type='password' placeholder="Contraseña" onChange={(e)=>
                             {
                                 setPassword(e.target.value);
                             }
@@ -134,7 +174,7 @@ const Registro = () => {
                         
                         <Col sm>
                             
-                            <Form.Control placeholder="Direccion" onChange={(e)=>
+                            <Form.Control required type='text' placeholder="Direccion" onChange={(e)=>
                             {
                                 setDirection(e.target.value);
                             }
@@ -143,7 +183,7 @@ const Registro = () => {
 
                         <Col sm>
                         
-                            <Form.Control placeholder="Telefono" onChange={(e)=>
+                            <Form.Control required type='number' placeholder="Telefono" onChange={(e)=>
                             {
                                 setTelephone_Number(e.target.value);
                             }
@@ -153,9 +193,9 @@ const Registro = () => {
                     
                     <br />
                     <div style={{paddingleft:"50px"}}>
-                    <Button variant="outline-info form"><b> Cancelar  </b></Button>
-                    <Button variant="outline-info form " onClick={register}><b> Guardar </b></Button>
-                
+                    <Button type="submit" ><b> Cancelar  </b></Button>
+                    <Button type="submit" className="btn btn-primary " ><b> Guardar </b></Button>
+                    
                 
                     </div>
                     <div style={{paddingleft:"50px"}}>
@@ -165,8 +205,7 @@ const Registro = () => {
         
                 
 
-            </Form>
-
+            
 
 
         </div>

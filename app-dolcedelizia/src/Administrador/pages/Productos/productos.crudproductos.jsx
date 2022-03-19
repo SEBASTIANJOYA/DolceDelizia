@@ -3,6 +3,26 @@ import {Dropdown} from "react-bootstrap";
 import Sidebar from '../../components/sidebar/sidebar'
 import './productos.scss'
 import Axios from 'axios';
+
+
+function validacionDescripcion(){
+    var subject = document.getElementById("desc-input").value; 
+    var regex = /^[^$%&|/*+<>#()=?¡¿ ]*$/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar caracteres especiales")
+    }else{
+    }
+}
+
+function validacionNombre(){
+    var subject = document.getElementById("name-input").value; 
+    var regex = /[a-zA-Z\t\h]+|(^$)/;
+    if(regex.test(subject) == false) { 
+        alert("No se pueden ingresar numeros")
+    }else{
+    }
+}
+
 const Producto = ()=>{
 
     const [name,setname]= useState("");   
@@ -120,7 +140,10 @@ const Producto = ()=>{
                         <div className="form-group col-md-6" style={{textAlign: 'Left'}}>
 
                             <label id="name-product">Nombre</label>
-                            <input type="text" name="name-input" class="form-control" placeholder="Nombre" required  onChange={(e)=>{
+                            <input type="text" id='name-input' name="name-input" class="form-control" placeholder="Nombre" required  
+                            
+                                onChange={(e)=>{
+                                    validacionNombre();
                                     setname(e.target.value);
                                     
                                 }}></input>
@@ -130,23 +153,20 @@ const Producto = ()=>{
                         <div className="form-group col-md-6 " style={{textAlign: 'Left'}}>
 
                             <label id="desc-product">Descripcion</label>
-                            <input type="text" name="desc-input" class="form-control" placeholder="Descripcion" required  onChange={(e)=>{
+                            <input type="text" id="desc-input" name="desc-input" class="form-control" placeholder="Descripcion" required  onChange={(e)=>{
+                                    validacionDescripcion();
                                     setdescripcion(e.target.value);
-                                    
+                                  
                                 }}></input>
                                                 
                             <br></br>  
                                                 
                         </div>
 
-                   
-                   
-                    
-
                         <div className="form-group col-md-4" style={{textAlign: 'Left'}}>
 
                             <label id="prize-product">Valor Unitario</label>
-                            <input type="text" name="prize-input" class="form-control" placeholder="Precio Un." required
+                            <input type="number" name="prize-input" class="form-control" placeholder="Precio Un." required
                              onChange={(e)=>{
                                 setvalorunitario(e.target.value);
                                 
