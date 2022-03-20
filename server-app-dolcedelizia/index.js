@@ -21,10 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/user',require('./routes/user'));
 app.use('/product',require('./routes/product'));
-app.use(require('./routes/stock'));
-app.use(require('./routes/detailBill'));
-app.use(require('./routes/bill'));
-app.use(require('./routes/category'));
+app.use('/order',require('./routes/order'));
+
 
 
 //Se define el puerto por el que va a correr el servidor

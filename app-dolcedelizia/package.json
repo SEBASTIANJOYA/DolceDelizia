@@ -4,8 +4,7 @@
   "private": true,
   "engines": {
     "node": "14.18.1"
-  }
-  ,
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -56,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-router": "^5.2.1"
   }
 }

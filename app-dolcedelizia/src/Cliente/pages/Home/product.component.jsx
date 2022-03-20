@@ -1,12 +1,19 @@
-import React, { Fragment,useState}from 'react';
+import React, { Fragment,useContext,useState}from 'react';
 import './product.component.scss'
-
-
+import {DataContext} from "../../../controllers/context.js"
+import reactDom from 'react-dom';
+import logocarrito from '../../components/Menu/carrito.png'
 
 
 const Producto = (props) => {
     const [item,setItem]= useState([])
     const [amount,setAmount]=useState(0)
+
+    const value= useContext(DataContext);
+    const carrito=value.addCarrito;
+
+    
+
     var data=JSON.parse(localStorage.getItem('items'))
     
     
@@ -36,11 +43,13 @@ const Producto = (props) => {
             discount:descuento
         }]
 
-
+        
         if(localStorage.getItem('items')==null){
             
             
             localStorage.setItem("items",JSON.stringify(objeto))
+            
+
         }
         else{
             
@@ -57,6 +66,8 @@ const Producto = (props) => {
            
             if(verificar==false){
 
+               
+
                 data.push({
                     id:id,
                     name:nombre,
@@ -64,11 +75,14 @@ const Producto = (props) => {
                     amount:amount,
                     discount:descuento
                 })
+
+               
                 
             }
             
-           
+            carrito(data);
             localStorage.setItem("items",JSON.stringify(data))
+            
 
                     
 

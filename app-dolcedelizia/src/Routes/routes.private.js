@@ -1,6 +1,6 @@
 import React from 'react' ;
 
-import {Switch, Route, Redirect } from 'react-router-dom';
+import {BrowserRouter as Router,Switch, Route, Redirect } from 'react-router-dom';
 import ReporteVentas from'../Administrador/pages/ReporteVentas/reporteventas';
 import Producto from '../Administrador/pages/Productos/productos.crudproductos';
 import Empleado from '../Administrador/pages/Empleados/empleados.crudempleados';

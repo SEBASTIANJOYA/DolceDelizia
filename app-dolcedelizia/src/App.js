@@ -9,11 +9,15 @@ import Footer from "./Cliente/components/footer/footer.component";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import isAuth from './controllers/logout'
 import Sidebar from './Administrador/components/sidebar/sidebar.js'
-
+import {DataProvider} from './controllers/context.js'
 function App() {
   return (
+
+    
   <Router>
 
+    <DataProvider>
+    
     <div className="App"$>
       
     
@@ -50,7 +54,12 @@ function App() {
       <Footer></Footer>
       
     </div>
+
+    
+    </DataProvider> 
   </Router>
+
+  
   );
 }
 

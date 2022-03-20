@@ -1,6 +1,6 @@
 import React from 'react' ;
 
-import {Switch, Route, Redirect } from 'react-router-dom';
+import {BrowserRouter as Router,Switch, Route, Redirect } from 'react-router-dom';
 import Login from '../Cliente/pages/Login/login.component';
 import Registro from '../Cliente/pages/Registro-Datos/registro.component';
 import HomeDolceDelizia from '../Cliente/pages/Home/home.component.jsx';
@@ -8,6 +8,8 @@ import Carrito from '../Cliente/pages/Carrito/carrito.component'
 import QuienesSomos from '../Cliente/pages/QuienesSomos/quienessomos.component.jsx'
 const Routes = () => {
     return(
+
+        <Router>
             <Switch>
                 <Route exact path="/">
                     
@@ -32,14 +34,18 @@ const Routes = () => {
                     <Registro></Registro>
                 </Route>
 
-                <Route exact path="/carrito">
-                    <Carrito></Carrito>
+                <Route  path='/carrito'
+                render={(props) => (
+                    <Carrito {...props}  />
+                )}/>
                     
-                </Route>
+                    
+                
 
                 <Redirect path="/**" to="/"/> 
 
             </Switch>
+            </Router>
    
 
     )

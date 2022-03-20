@@ -30,6 +30,7 @@ import logout from '../../../controllers/logout'
                 else{
                     
                     var date=new Date();
+                    localStorage.setItem('iduser', response.data.iduser);
                     localStorage.setItem('user', response.data.user)
                     localStorage.setItem('date',date);
                     localStorage.setItem('type_user',response.data.typeuser)

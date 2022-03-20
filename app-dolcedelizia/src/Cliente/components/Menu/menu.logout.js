@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import {Navbar,Button,Container,Nav,Form,FormControl, Row,Col} from "react-bootstrap";
 import logo from './dolcedelizia.png';
 import logocarrito from './carrito.png'
+import {DataContext} from '../../../controllers/context.js'
 
 
 
 const Home = () => {
+
+  const value= useContext(DataContext)
+  const [carrito,setCarrito]=value.items
+
+  
+  
   
     return (
         <Navbar className="navbar navbar-dark bg-primary " collapseOnSelect="true" role="navigation" bg="blue" expand="md" style={
@@ -31,12 +38,12 @@ const Home = () => {
               <Col lg={4}>
               <Nav.Link href="/homedolcedelizia"><b>INICIO</b></Nav.Link>
               </Col>
-              <Col lg={5}>
+              <Col lg={6}>
               <Nav.Link href="/quienessomos"><b>QUIENES SOMOS</b></Nav.Link>
               </Col>
-              <Col lg={3}>
+              <Col lg={4}>
 
-              <Nav.Link href="/login"><b>LOGIN</b></Nav.Link>
+              <Nav.Link href="/login" className="ml-2"><b>LOGIN</b></Nav.Link>
               </Col>
 
               
@@ -56,7 +63,7 @@ const Home = () => {
 
                   (localStorage.getItem('items')==null)?
                   0:
-                  JSON.parse(localStorage.getItem('items')).length
+                  carrito.length
                 }</span></a> 
 
 

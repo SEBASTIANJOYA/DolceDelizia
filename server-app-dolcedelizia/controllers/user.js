@@ -116,6 +116,7 @@ const getUsers = async (req, res = response) => {
       'SELECT * FROM Usuario;',
       function (err, results, fields) {
         if (err) {
+          console.log(err)
           //Error al ejecutar la consulta 
           return res.status(500).json({
             success: false,
@@ -290,6 +291,7 @@ const loginUser = async (req, res = response) => {
             auth:true,
             user:user,
             typeuser:results[0].Id_tipo,
+            iduser:results[0].identificacion
             //token:accessToken,
         })
         //res.send(result);
