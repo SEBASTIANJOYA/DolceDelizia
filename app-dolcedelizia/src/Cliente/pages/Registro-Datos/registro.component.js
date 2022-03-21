@@ -112,7 +112,7 @@ const Registro = () => {
                         </Col>
                         <Col>
                             
-                            <Form.Control required id='nametwo' placeholder="Segundo Nombre" onChange={(e)=>
+                            <Form.Control  id='nametwo' placeholder="Segundo Nombre" onChange={(e)=>
                             {
                                 validacionSegundoNombre();
                                 setSecond_name(e.target.value);

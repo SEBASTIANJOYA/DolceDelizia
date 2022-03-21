@@ -44,7 +44,7 @@ class Carrito extends React.Component {
 
   addOrder(total){
 
-    console.log(this.items[0].amount)
+    
     if(localStorage.getItem('user')==null){
       alert("Debe loguearse primero")
       window.location.href="./login"
@@ -96,8 +96,12 @@ class Carrito extends React.Component {
       <>
 
       {
-        (this.items==null) ?
+        (
+           this.items==null) ?
 
+        <h1 style={{paddingTop:'100px',paddingBottom:'100px'}}>CARRITO VACIO</h1>
+        :
+        (this.items.length==0) ?
         <h1 style={{paddingTop:'100px',paddingBottom:'100px'}}>CARRITO VACIO</h1>
         :
         <>

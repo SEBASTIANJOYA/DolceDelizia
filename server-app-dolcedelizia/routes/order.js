@@ -8,7 +8,7 @@ const {
   createOrder,
   DescOrder,
   deleteOrder,
-  
+  sendOrder
   
 
 } = require('../controllers/order');
@@ -22,6 +22,7 @@ const router = Router();
 router.get('/listaPedidos', [], getOrders);
 router.post('/descripcionPedido', [], DescOrder);
 router.post('/registroPedido', [], createOrder);
+router.post('/cambiarEstado', [], sendOrder);
 router.delete('/eliminarUsuario/:id', [], deleteOrder);
 
 

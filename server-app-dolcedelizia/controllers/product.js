@@ -68,18 +68,18 @@ const getProduct = async (req, res = response) => {
   try {
     //Son lo parámetros que se le envían a la petición para identificar que registro buscar
     const {
-      idProduct, //Identificador del producto (id_producto)
-      idTypeProduct, //tipo de producto (Id_tipo) llave foránea
-    } = req.params;
+      id, //Identificador del producto (id_producto)
+       //tipo de producto (Id_tipo) llave foránea
+    } = req.body;
     //Consulta a ejecutar
     var SQLSearch =  'SELECT * FROM Producto '
-    SQLSearch += '  WHERE id_producto = '+ idProduct  + ' AND Id_tipo = '+idTypeProduct+';';
+     +'  WHERE id_producto = '+ id  + ';';
 
     const connection = productConnection();
     connection.query(
       SQLSearch,
       function (err, results, fields) {
-        console.log("holamundo")
+        
         if (err) {
           //Error con la base de datos
           return res.status(500).json({
@@ -90,7 +90,7 @@ const getProduct = async (req, res = response) => {
           //Resultado de la consulta
           return res.status(200).json({
             success: true,
-            results
+            result:results
           });
         }
       }
@@ -113,7 +113,7 @@ const getProducts = async (req, res = response) => {
 
     query += 'inner join TipoProducto i ' 
     
-   query+=  'on p.Id_tipo=i.Id_tipo AND cantidad > 0;'
+   query+=  'on p.Id_tipo=i.Id_tipo ;'
     connection.query(
       query,
       function (err, results, fields) {
@@ -153,30 +153,27 @@ const updateProduct = async (req, res = response) => {
       valor_unitario,
       descripcion,
       cantidad,
-      porcentaje_descuento,
-      Id_tipo,
+      categoria,
+      id_producto
     } = req.body;
 
-    //Son lo parámetros que se le envían a la petición para identificar que registro modificar
-    const {
-      idProduct, //Identificador del producto (id_producto), en dado caso que la quiera modificar se guarda para poder realizar la actualización
-      idTypeProduct, //tipo de producto (Id_tipo) llave foránea
-    } = req.params;
-    //Consulta a ejecutar
-    var SQLUpdate =  'UPDATE Producto SET '
-    SQLUpdate += ' nombre = \'' + nombre + '\', ' 
-    SQLUpdate += ' valor_unitario = ' + valor_unitario + ', ' 
-    SQLUpdate += ' descripcion = \'' + descripcion + '\', ' 
-    SQLUpdate += ' cantidad = ' + cantidad + ', ' 
-    SQLUpdate += ' porcentaje_descuento = ' + porcentaje_descuento + ', ' 
-    SQLUpdate += ' Id_tipo = ' + Id_tipo
-    SQLUpdate += '  WHERE id_producto = '+ idProduct  + ' AND Id_tipo = '+idTypeProduct+';';
+    
+    
 
     const connection = productConnection();
     connection.query(
-      SQLUpdate,
+      'UPDATE Producto SET '
+    +' nombre =?, ' 
+    + ' valor_unitario =?, ' 
+    +' descripcion = ?, ' 
+    +' cantidad = ?, ' 
+   
+    +' Id_tipo = ?' 
+    +'  WHERE id_producto = ?;',
+      [nombre,valor_unitario,descripcion,cantidad,categoria,id_producto],
       function (err, results, fields) {
         if (err) {
+          console.log(err)
           //Error con la base de datos
           return res.status(500).json({
             success: false,

@@ -3,11 +3,11 @@ import {Dropdown} from "react-bootstrap";
 import Sidebar from '../../components/sidebar/sidebar'
 import './productos.scss'
 import Axios from 'axios';
-
+import { Button,Modal } from 'react-bootstrap';
 
 function validacionDescripcion(){
     var subject = document.getElementById("desc-input").value; 
-    var regex = /^[^$%&|/*+<>#()=?¡¿ ]*$/;
+    var regex = /^[^$%&|/*+<>#()=?¡¿]*$/;
     if(regex.test(subject) == false) { 
         alert("No se pueden ingresar caracteres especiales")
     }else{
@@ -15,7 +15,7 @@ function validacionDescripcion(){
 }
 
 function validacionNombre(){
-    var subject = document.getElementById("name-input").value; 
+    var subject = document.getElementById("update-name").value; 
     var regex = /[a-zA-Z\t\h]+|(^$)/;
     if(regex.test(subject) == false) { 
         alert("No se pueden ingresar numeros")
@@ -24,7 +24,7 @@ function validacionNombre(){
 }
 
 const Producto = ()=>{
-
+    const [show, setShow] = useState(false);
     const [name,setname]= useState("");   
     const [descripcion,setdescripcion]= useState("");
     const [valorunitario,setvalorunitario]= useState("");
@@ -33,6 +33,24 @@ const Producto = ()=>{
     const [category,setCategory]= useState("")
     const [dropdown,setDropdown]= useState("Seleccione Una")
     const [amount,setAmount]=useState("")
+    const [id_producto,setIdProducto]= useState("")
+    const handleClose = () => {
+        setShow(false);
+        
+
+    }
+    
+    const handleShow = (id,nombre,descripcion,valor,cantidad) => {
+        setIdProducto(id)
+        setname(nombre)
+        setdescripcion(descripcion)
+        setvalorunitario(valor)
+        setAmount(cantidad)
+        setShow(true);
+
+   
+
+    }
         
         useEffect(()=>{
 
@@ -97,7 +115,7 @@ const Producto = ()=>{
                     
     
                     console.log(response);
-    
+                    window.location.href="/administrador/productos"
                     
     
     
@@ -110,29 +128,49 @@ const Producto = ()=>{
 
         }
 
-        
-        
-    const deleteProducto=(Id)=>{
-
-        
-        
-        Axios.delete(`http://localhost:3001/product/eliminarProduct/${Id}`,{
+        const ModifyProduct=(id)=>{
             
-        }).then((response)=>{
+           
+            if(dropdown!="Seleccione Una"){
+            Axios.put('http://localhost:3001/product/actualizarProducto',{
 
             
-            window.location.reload();
-        })
-    }
+                nombre:name, 
+                descripcion:descripcion,
+                valor_unitario:Number(valorunitario),
+                cantidad:Number(amount),
+                categoria:category,
+                id_producto:id
+                })
+                .then((response)=>{
+    
+                    
+    
+                    console.log(response);
+                    alert("hola")
+                    
+    
+    
+                })
+            }else{
+                    alert("Inserte una categoria")
+                }
 
+           }
+
+
+        
+
+        
+        
     return(
             <Fragment>
 
             
             
-            <div className="container productos" style={{fontSize:'20px'}}>
+            <div className="container productos" style={{fontSize:'20px',paddingTop:'30px'}}>
                 
-                <form >
+                <form onSubmit={Addproducts} style={{paddingBottom:'60px'}}>
                     <header >Registro de Productos</header>
                     <br></br>
                     <div className="row">
@@ -140,7 +178,7 @@ const Producto = ()=>{
                         <div className="form-group col-md-6" style={{textAlign: 'Left'}}>
 
                             <label id="name-product">Nombre</label>
-                            <input type="text" id='name-input' name="name-input" class="form-control" placeholder="Nombre" required  
+                            <input type="text" id='update-name' name="update-name" class="form-control" placeholder="Nombre" required  
                             
                                 onChange={(e)=>{
                                     validacionNombre();
@@ -224,10 +262,10 @@ const Producto = ()=>{
 
                     </div>
                     <br></br>
-                <button type="submit" onClick={Addproducts}class="btn btn-primary">Registrar</button>
+                <button type="submit" class="btn btn-primary">Registrar</button>
 
                 </form>
-                <div className="table-responsive container" style={{paddingTop:'50px',textAlign:'center',maxHeight: "30rem",overflow:'auto'}}>
+                <div className="table-responsive container" style={{paddingTop:'50px',paddingBottom:'50px',textAlign:'center',maxHeight: "30rem",overflow:'auto'}}>
                     <h4>Productos Registrados</h4>
                     
                     <table className="table table-striped">
@@ -239,7 +277,6 @@ const Producto = ()=>{
                         <th scope="col">Descripcion</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">Foto</th>
                         <th scope="col">Acciones</th>
 
                         </tr>
@@ -257,9 +294,119 @@ const Producto = ()=>{
                             <td>{value.descripcion}</td>
                             <td>{value.categoria}</td>
                             <td>{value.cantidad}</td>
-                            <td>{value.foto}</td>
-                            <td><button className="btn btn-primary" onClick={()=>deleteProducto(value.id_producto)} type="submit" style={{width:'2px'}}>E</button>
-                                <button className="btn btn-success" type="submit" style={{width:'2px'}}>A</button>
+                            <td>
+                            <Button variant="success" onClick={()=>handleShow(value.id_producto,value.nombre,value.descripcion,value.valor_unitario,value.cantidad)}>
+                                                        D
+                                                    </Button>
+
+                            <Modal size="lg"show={show} onHide={handleClose} style={{Width:'600px',display:'flex'}}>
+                                    <Modal.Header closeButton >
+                                    <Modal.Title>Actualizar Producto: {name}</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body style={{alignText: 'center',marginLeft:'60px',marginBottom:'40px',width:'600px'}}>
+                                    
+                                    <form onSubmit={()=>ModifyProduct(id_producto)} >
+                                    <div className="row">
+                                    <div className="form-group col-md-6" style={{textAlign: 'Left'}}>
+
+                                    <label id="name-product">Nombre</label>
+                                    <input type="text" id='update-name' name="update-name" defaultValue={name}class="form-control"  required  
+
+                                        onChange={(e)=>{
+                                            validacionNombre();
+                                            setname(e.target.value);
+                                            
+                                        }}></input>
+                                    <br></br>                    
+                                    </div>
+
+                                    <div className="form-group col-md-6 " style={{textAlign: 'Left'}}>
+
+                                        <label id="desc-product">Descripcion</label>
+                                        <input type="text" id="desc-input" name="desc-input"defaultValue={descripcion} class="form-control" required  onChange={(e)=>{
+                                                validacionDescripcion();
+                                                setdescripcion(e.target.value);
+                                            
+                                            }}></input>
+                                                            
+                                        <br></br>  
+                                                            
+                                   
+                                    </div>
+
+                                    <div className="form-group col-md-4" style={{textAlign: 'Left'}}>
+
+                                        <label id="prize-product">Valor Unitario</label>
+                                        <input type="number" name="prize-input" class="form-control" defaultValue={valorunitario} placeholder="Precio Un." required
+                                        onChange={(e)=>{
+                                            setvalorunitario(e.target.value);
+                                            
+                                        }} ></input>
+                                        <br></br>                    
+                                    </div>
+
+                                    <div className="form-group col-md-3" style={{textAlign: 'Left'}}>
+
+                                        <label id="amount-product">Cantidad</label>
+                                        <input type="number" name="amount-input" className="form-control" defaultValue={amount} placeholder="Cantidad" required
+                                        onChange={(e)=>{
+                                            setAmount(e.target.value);
+                                            
+                                        }}></input>
+                                        <br></br>                    
+                                    </div>
+
+                                    <div className="form-group  col-md-5" style={{textAlign: 'Left'}}>
+
+                                        <label id="categories-product">Categoria</label>
+                                        <Dropdown onSelect={(e)=>{
+
+                                                categories.map((value)=>{
+
+                                                    
+
+                                                    if(e== value.Id_tipo){
+                                                        setDropdown(value.nombre)
+                                                    
+                                                    }
+                                                })
+
+                                                setCategory(e)
+                                        }} >
+                                            <Dropdown.Toggle variant="success" id="dropdown-basic" style={{width:'100%'}}>
+                                                {dropdown}
+                                            </Dropdown.Toggle>
+
+                                            <Dropdown.Menu>
+                                                {
+                                                categories.map((e)=>{
+                                                            
+                                                            return(
+                                                            <Dropdown.Item eventKey={e.Id_tipo} value={e.nombre}>{e.nombre}</Dropdown.Item>
+                                                            );
+                                                        
+                                                        
+                                                    })
+                                                }
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                                        
+                                    </div>
+                                    </div>
+                                    <Button type="submit"variant="primary" >
+                                        Save Changes
+                                    </Button>
+                                    <Button href="/administrador/productos"variant="secondary" onClick={handleClose}>
+                                        Close
+                                    </Button>
+                                    </form>
+                                    
+                                    </Modal.Body>
+                                    <Modal.Footer >
+                                    
+                                    
+                                    </Modal.Footer>
+                            </Modal>
                             </td>
                                         
                         </tr>)

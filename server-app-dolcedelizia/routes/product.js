@@ -17,10 +17,10 @@ const router = Router();
 //Rutas para acceder a las funciones de la API
 //Para las funciones que tienen como parámetros idProduct e idTupeProduct, hace referencia a idProduct = id_producto
 // e idTypeProduct = Id_tipo (tipo de de producto) llave foránea 
-router.get('/product/:idProduct/:idTypeProduct', [], getProduct); 
+router.post('/consultarProducto', [], getProduct); 
 router.get('/listaProductos', [], getProducts);
 router.post('/registroProducto', [], createProduct);
-router.put('/product/:idProduct/:idTypeProduct', [], updateProduct);
+router.put('/actualizarProducto', [], updateProduct);
 router.delete('/eliminarProduct/:idProduct/', [], deleteProduct);
 router.get('/typeProduct', [],typeProduct);
 

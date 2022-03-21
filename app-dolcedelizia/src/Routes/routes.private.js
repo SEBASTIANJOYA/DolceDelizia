@@ -5,7 +5,7 @@ import ReporteVentas from'../Administrador/pages/ReporteVentas/reporteventas';
 import Producto from '../Administrador/pages/Productos/productos.crudproductos';
 import Empleado from '../Administrador/pages/Empleados/empleados.crudempleados';
 import PedidosRealizados from '../Administrador/pages/Pedidos/pedidosrealizados';
-import FacturaFisica from '../Administrador/pages/Pedidos/facturacionfisica'
+
 
 const Routes = () => {
     return(
@@ -29,10 +29,6 @@ const Routes = () => {
                 <Route exact path="/administrador/pedidosrealizados">
                     <PedidosRealizados></PedidosRealizados>
                 </Route>
-
-                <Route exact path="/administrador/facturacionfisica">
-                    <FacturaFisica></FacturaFisica>
-                </Route> 
 
                 <Redirect path="/**" to="/administrador/empleados"/>  
 

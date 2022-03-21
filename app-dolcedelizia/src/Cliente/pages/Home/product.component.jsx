@@ -3,12 +3,12 @@ import './product.component.scss'
 import {DataContext} from "../../../controllers/context.js"
 import reactDom from 'react-dom';
 import logocarrito from '../../components/Menu/carrito.png'
-
+import Axios from 'axios';
 
 const Producto = (props) => {
     const [item,setItem]= useState([])
     const [amount,setAmount]=useState(0)
-
+    
     const value= useContext(DataContext);
     const carrito=value.addCarrito;
 
@@ -18,9 +18,9 @@ const Producto = (props) => {
     
     
     const addCar=(id,nombre,precio,descuento)=>{
-
+        let stock;
         
-       
+        
         
         if(document.getElementsByClassName(id)[0].value==""){
 
@@ -31,9 +31,23 @@ const Producto = (props) => {
             
         }
         else{
-        
-          
-       
+
+            Axios.post("http://localhost:3001/product/consultarProducto",{
+            id:props.id,
+        }).then(response=>{
+
+            
+            if(response.data.result[0].cantidad<amount){
+                stock=false;
+            }
+            
+
+            
+        if(stock==false){
+            
+            alert("La cantidad tiene que estar dentro del rango de stock\n\n STOCK:"+response.data.result[0].cantidad)
+        }
+        else{
         document.getElementsByClassName(id)[0].value="" ;
         var objeto=[{
             id:id,
@@ -82,11 +96,19 @@ const Producto = (props) => {
             
             carrito(data);
             localStorage.setItem("items",JSON.stringify(data))
-            
+            alert("Agregado Correctamente")
 
                     
 
         }
+    }
+            
+        })
+        
+            
+          
+           
+        
         
     }
     }
@@ -108,7 +130,7 @@ const Producto = (props) => {
 
                 <div id={props.id}> </div>
                 <button  type="button"onClick={()=>addCar(props.id,props.nombre,props.precio,props.descuento)}className="btn btn-primary " >ADD</button>
-                
+                <div>Stock:  {props.cantidad}</div>
             </div>   
 
             

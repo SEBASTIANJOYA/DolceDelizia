@@ -28,7 +28,7 @@ const list = (props) => {
                             precio={item.valor_unitario}
                             categoria={cat.nombre}
                             descuento={item.porcentaje_descuento}
-                        
+                            cantidad={item.cantidad}
                         />
                         :
                         console.log("hecho")  

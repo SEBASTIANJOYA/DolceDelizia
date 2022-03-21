@@ -30,7 +30,7 @@ const createUser = async (req, res = response) => {
       "INSERT INTO Usuario (identificacion,Id_tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,usuario,contraseña,direccion,telefono,email) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
       [identificacion,Id_tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,usuario,contrasena,direccion,telefono,email],
       function (err, results, fields) {
-
+        
         if (err) {
           console.log(err);
           //Error con la base de datos
@@ -39,7 +39,7 @@ const createUser = async (req, res = response) => {
             result: err,
           });
         } else{
-          console.log("como");
+          
           //Respuesta de la petición
 
          
@@ -123,9 +123,8 @@ const getUsers = async (req, res = response) => {
             result: err,
           });
         } else {
-          //
+      
 
-          console.log("esta")
           res.send(results);
         }
       }
@@ -190,7 +189,7 @@ const updateUser = async (req, res = response) => {
             result: err,
           });
         } else {
-          console.log("como");
+          
           //Resultado de la consulta
           return res.status(200).json({
             success: true,
@@ -236,7 +235,7 @@ const deleteUser = async (req, res = response) => {
           });
         } else {
 
-          console.log("hecho")
+          
           //Resultado de la consulta
           return res.status(200).json({
             success: true,

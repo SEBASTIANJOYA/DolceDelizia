@@ -115,9 +115,9 @@ const Empleado = ()=>{
 
         
         
+        
 
-
-        Axios.post('http://localhost:3001/registroCliente',{
+        Axios.post('http://localhost:3001/user/registroCliente',{
             usuario:user,
             contrasena:password,
             identificacion: cedula,
@@ -134,6 +134,7 @@ const Empleado = ()=>{
         .then((response)=>{
 
             console.log(response);
+            
 
             window.location.href="./administrador/empleados"
 
@@ -171,9 +172,9 @@ const Empleado = ()=>{
 
             <div><h1>NO DISPONIBLE</h1></div>
             :
-            <div className="container empleados"  >
+            <div className="container empleados"  style={{paddingTop:'30px'}}>
                 
-                <form >
+                <form onSubmit={addUsers} style={{paddingBottom:'50px'}}>
 
                     <header style={{paddingBottom:'20px'}}>Registro de Empleados</header>
                      
@@ -195,12 +196,12 @@ const Empleado = ()=>{
                          <div className="form-group col-md-4">
                              <br></br>
                              <label className="label-name2">Segundo Nombre</label>
-                             <input className="form-control" id="input-name2"placeholder="Segundo Nombre" type="text"
+                             <input  className="form-control" id="input-name2"placeholder="Segundo Nombre" type="text"
                                 onChange={(e)=>{
                                     validacionSegundoNombre()
                                     setSecond_name(e.target.value)
                                 }}
-                                required></input>
+                                ></input>
 
                          </div>
 
@@ -360,7 +361,7 @@ const Empleado = ()=>{
 
                      </div>
                      
-                    <button type="submit"className="btn btn-primary " onClick={addUsers} style={{marginTop:'50px'}}>REGISTRAR</button>
+                    <button type="submit"className="btn btn-primary "  style={{marginTop:'50px'}}>REGISTRAR</button>
 
                 </form>
 
