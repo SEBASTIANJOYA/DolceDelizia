@@ -9,7 +9,11 @@ const PedidosRealizados = ()=>{
     const [order,setOrder]=useState([]);
     const [show, setShow] = useState(false);
     const [description,setDescription] = useState([]);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setDescription([])
+
+    }
     
     const handleShow = (id_factura) => {
     
@@ -18,9 +22,21 @@ const PedidosRealizados = ()=>{
 
    
 
-  }
-      
-   
+    }
+  
+    const sendOrder = (id_pedido) => {
+
+        Axios.post('http://localhost:3001/order/cambiarEstado',
+        {
+            id_pedido: id_pedido
+
+        }).then((response)=>{
+
+            window.location.reload();
+
+        })
+
+    }
 
     useEffect(()=>{
 
@@ -42,7 +58,7 @@ const PedidosRealizados = ()=>{
             id_factura:id_factura
         }).then((response)=>{
             setDescription(response.data.result);
-            console.log(response.data.result)
+            
         })
 
 
@@ -58,7 +74,9 @@ const PedidosRealizados = ()=>{
 
                 <header style={{marginTop:'50px',marginBottom:'50px'}}>REGISTRO DE PEDIDOS</header>
                 
-                <table className="table">
+                <div className="table-responsive container"style={{paddingTop:'50px',overflow:'auto',maxHeight: "30rem",
+                 }}>
+                <table className="table table-striped">
 
 
                     <thead>
@@ -68,7 +86,7 @@ const PedidosRealizados = ()=>{
                             <th scope="col">Cliente</th>
                             <th scope="col">Direccion</th>
                             <th scope="col">Descripcion</th>
-                            <th scope="col">Enviado</th>
+                            <th scope="col">Enviar</th>
 
 
 
@@ -82,6 +100,10 @@ const PedidosRealizados = ()=>{
 
                                 order.map(e=>
                                     {
+
+                                        if(e.estado=="0"){
+
+                                        
 
                                         return(
                                             <tr>
@@ -139,14 +161,16 @@ const PedidosRealizados = ()=>{
                                                             </Modal.Footer>
                                                     </Modal>
                                                 </td>
-                                                <td>{(e.estado=="0")?
-                                        "NO":"SI"}</td>
+                                                <td>
+                                                    <Link onClick={()=>sendOrder(e.id_pedido)} to="/administrador/pedidosrealizados"><BsIcons.BsCheckAll style={{color:'green',fontSize:'30px'}}/></Link>
+                                                </td>
 
                                             </tr>
 
                                     
                                         )
-
+                                        
+                                        }
 
                                     }
                     
@@ -161,6 +185,8 @@ const PedidosRealizados = ()=>{
 
 
                 </table>
+
+                </div>
 
             </div>
 
