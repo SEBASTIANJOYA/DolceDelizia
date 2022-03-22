@@ -54,7 +54,7 @@ const Producto = ()=>{
         
         useEffect(()=>{
 
-            Axios.get('http://localhost:3001/product/listaProductos',{ 
+            Axios.get('https://backend-dolcedelizia.herokuapp.com/product/listaProductos',{ 
         
     
             }).then((response)=>{
@@ -68,7 +68,7 @@ const Producto = ()=>{
                 
             });
 
-            Axios.get('http://localhost:3001/product/typeProduct',{
+            Axios.get('https://backend-dolcedelizia.herokuapp.com/product/typeProduct',{
 
             }).then(response=>{
 
@@ -100,7 +100,7 @@ const Producto = ()=>{
                 alert("Producto ya Registrado")
            }
            else{
-            Axios.post('http://localhost:3001/product/registroProducto',{
+            Axios.post('https://backend-dolcedelizia.herokuapp.com/product/registroProducto',{
 
             
                 nombre:name, 
@@ -132,7 +132,7 @@ const Producto = ()=>{
             
            
             if(dropdown!="Seleccione Una"){
-            Axios.put('http://localhost:3001/product/actualizarProducto',{
+            Axios.put('https://backend-dolcedelizia.herokuapp.com/product/actualizarProducto',{
 
             
                 nombre:name, 
@@ -294,6 +294,7 @@ const Producto = ()=>{
                             <td>{value.descripcion}</td>
                             <td>{value.categoria}</td>
                             <td>{value.cantidad}</td>
+                            
                             <td>
                             <Button variant="success" onClick={()=>handleShow(value.id_producto,value.nombre,value.descripcion,value.valor_unitario,value.cantidad)}>
                                                         D

@@ -57,7 +57,7 @@ const Registro = () => {
     const register=()=>{
         
         
-        Axios.post('http://localhost:3001/user/registroCliente',{ 
+        Axios.post('https://backend-dolcedelizia.herokuapp.com/user/registroCliente',{ 
     
             usuario:user,
             contrasena:password,

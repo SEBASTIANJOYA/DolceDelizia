@@ -98,7 +98,7 @@ const Empleado = ()=>{
     
     useEffect(()=>{
 
-        Axios.get('http://localhost:3001/user/listaUsuarios',{ 
+        Axios.get('https://backend-dolcedelizia.herokuapp.com/user/listaUsuarios',{ 
     
         }).then((response)=>{
             
@@ -117,7 +117,7 @@ const Empleado = ()=>{
         
         
 
-        Axios.post('http://localhost:3001/user/registroCliente',{
+        Axios.post('https://backend-dolcedelizia.herokuapp.com/user/registroCliente',{
             usuario:user,
             contrasena:password,
             identificacion: cedula,
@@ -147,7 +147,7 @@ const Empleado = ()=>{
 
         
         
-        Axios.delete(`http://localhost:3001/user/eliminarUsuario/${Id}`,{
+        Axios.delete(`https://backend-dolcedelizia.herokuapp.com/user/eliminarUsuario/${Id}`,{
             
         }).then((response)=>{
 

@@ -32,7 +32,7 @@ const Producto = (props) => {
         }
         else{
 
-            Axios.post("http://localhost:3001/product/consultarProducto",{
+            Axios.post("https://backend-dolcedelizia.herokuapp.com/product/consultarProducto",{
             id:props.id,
         }).then(response=>{
 

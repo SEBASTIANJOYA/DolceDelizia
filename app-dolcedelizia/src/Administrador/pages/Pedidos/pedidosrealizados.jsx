@@ -26,7 +26,7 @@ const PedidosRealizados = ()=>{
   
     const sendOrder = (id_pedido) => {
 
-        Axios.post('http://localhost:3001/order/cambiarEstado',
+        Axios.post('https://backend-dolcedelizia.herokuapp.com/order/cambiarEstado',
         {
             id_pedido: id_pedido
 
@@ -40,7 +40,7 @@ const PedidosRealizados = ()=>{
 
     useEffect(()=>{
 
-        Axios.get('http://localhost:3001/order/listaPedidos',
+        Axios.get('https://backend-dolcedelizia.herokuapp.com/order/listaPedidos',
         {
 
 
@@ -54,7 +54,7 @@ const PedidosRealizados = ()=>{
 
     const DescripcionPedido=(id_factura)=>{
 
-        Axios.post("http://localhost:3001/order/descripcionPedido",{
+        Axios.post("https://backend-dolcedelizia.herokuapp.com/order/descripcionPedido",{
             id_factura:id_factura
         }).then((response)=>{
             setDescription(response.data.result);

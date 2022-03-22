@@ -16,7 +16,7 @@ const HomeDolceDelizia  = () => {
 
     useEffect(()=>{
 
-        Axios.get('http://localhost:3001/product/listaProductos',{ 
+        Axios.get('https://backend-dolcedelizia.herokuapp.com/product/listaProductos',{ 
     
 
         }).then((response)=>{
@@ -30,7 +30,7 @@ const HomeDolceDelizia  = () => {
             
         });
 
-        Axios.get('http://localhost:3001/product/typeProduct',{
+        Axios.get('https://backend-dolcedelizia.herokuapp.com/product/typeProduct',{
 
             }).then(response=>{
 

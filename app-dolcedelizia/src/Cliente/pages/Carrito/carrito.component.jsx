@@ -53,7 +53,7 @@ class Carrito extends React.Component {
 
       
       
-      Axios.post('http://localhost:3001/order/registroPedido',{
+      Axios.post('https://backend-dolcedelizia.herokuapp.com/order/registroPedido',{
 
       id_usuario:localStorage.getItem("iduser"),
       productos:this.items,
