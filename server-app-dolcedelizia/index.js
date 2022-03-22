@@ -18,7 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-
 app.use('/user',require('./routes/user'));
 app.use('/product',require('./routes/product'));
 app.use('/order',require('./routes/order'));
@@ -26,7 +25,7 @@ app.use('/order',require('./routes/order'));
 
 
 //Se define el puerto por el que va a correr el servidor
-app.set('port', process.env.PORT || 3001)
+app.set('port', 5000)
 app.listen(app.get('port'), ()=>{
   console.log(`Server listen to port ${app.get('port')}`)
 })
